@@ -1,3 +1,6 @@
+// DI PA NATEST YUNG KASAMA PAG-CONNECT SA WIFI
+
+
 #include <DHT.h>
 #include <MQUnifiedsensor.h>
 #include <SoftwareSerial.h>
@@ -110,7 +113,7 @@ void setup() {
 }
 
 void loop() {
-    constexpr uint32_t down_s = 30;
+    constexpr uint32_t down_s = 210;
 
     stop_SDS();
     Serial.print("stopped SDS011 (is running = ");
@@ -120,7 +123,7 @@ void loop() {
     uint32_t deadline = millis() + down_s * 1000;
     while (static_cast<int32_t>(deadline - millis()) > 0) {
         delay(1000);
-        Serial.println(static_cast<int32_t>(deadline - millis()) / 1000);
+        //Serial.println(static_cast<int32_t>(deadline - millis()) / 1000);
         sds011.perform_work();
     }
 
@@ -132,17 +135,19 @@ void loop() {
     Serial.println(")");
 
     sds011.on_query_data_auto_completed([](int n) {
-        Serial.println("Begin Handling SDS011 query data");
+        //Serial.println("Begin Handling SDS011 query data");
         int pm25;
         int pm10;
         //Serial.print("n = "); 
         //Serial.println(n);
         if (sds011.filter_data(n, pm25_table, pm10_table, pm25, pm10) &&
             !isnan(pm10) && !isnan(pm25)) {
-            Serial.print("PM10: ");
-            Serial.println(float(pm10)/10);
-            Serial.print("PM2.5: ");
-            Serial.println(float(pm25)/10);
+            Serial.println("PM10: " + String(float(pm10)/10) + " ug/m^3");
+            Serial.println("PM2.5: " + String(float(pm25)/10) + " ug/m^3");
+            //Serial.print("PM10: ");
+            //Serial.println(float(pm10)/10);
+            //Serial.print("PM2.5: ");
+            //Serial.println(float(pm25)/10);
 
 
             float humi  = dht_sensor.readHumidity();
@@ -154,18 +159,20 @@ void loop() {
             if ( isnan(tempC) || isnan(tempF) || isnan(humi)) {
               Serial.println("Failed to read from DHT sensor!");
             } else {
+              Serial.println("Humidity: " + String(humi) + "%");
+              Serial.println("Temperature: " + String(tempC) + " C  ~  " + String(tempF) + " F");
+              //Serial.print("Humidity: ");
+              //Serial.print(humi);
+              //Serial.print("%");
 
-              Serial.print("Humidity: ");
-              Serial.print(humi);
-              Serial.print("%");
+              //Serial.print("  |  ");
 
-              Serial.print("  |  ");
-
-              Serial.print("Temperature: ");
-              Serial.print(tempC);
-              Serial.print(" C  ~  ");
-              Serial.print(tempF);
-              Serial.println(" F");
+              //Serial.println("Temperature: ");
+              //Serial.print(tempC);
+              //Serial.print(" C  ~  ");
+              //Serial.print(tempF);
+              //Serial.println(" F");
+              
             }
 
             MQ135.update(); // Update data, the arduino will be read the voltage on the analog pin
@@ -183,7 +190,7 @@ void loop() {
             Serial.print(CO);
             Serial.println(" ug/m^3");
         }
-        Serial.println("End Handling SDS011 query data");
+        //Serial.println("End Handling SDS011 query data");
         });
 
     if (!sds011.query_data_auto_async(pm_tablesize, pm25_table, pm10_table)) {
