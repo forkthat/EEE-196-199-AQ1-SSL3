@@ -1,4 +1,3 @@
-
 #include <SoftwareSerial.h>
 #include <Sds011.h>
 
@@ -101,8 +100,6 @@ void loop()
         Serial.println("Begin Handling SDS011 query data");
         int pm25;
         int pm10;
-        //Serial.print("n = "); 
-        //Serial.println(n);
         if (sds011.filter_data(n, pm25_table, pm10_table, pm25, pm10) &&
             !isnan(pm10) && !isnan(pm25)) {
             Serial.print("PM10: ");
