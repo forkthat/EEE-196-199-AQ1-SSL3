@@ -20,8 +20,8 @@
 #define ADC_Bit_Resolution 12 // For arduino UNO/MEGA/NANO
 #define RatioMQ135CleanAir 3.6//RS / R0 = 3.6 ppm  
 
-const char* ssid = "_WiFi@UPD";
-const char* password =  "";
+const char* ssid = "PENGUIN 9118";
+const char* password =  "2351i$0C";
 
 #ifdef ESP32
 HardwareSerial& serialSDS(Serial2);
@@ -161,18 +161,6 @@ void loop() {
             } else {
               Serial.println("Humidity: " + String(humi) + "%");
               Serial.println("Temperature: " + String(tempC) + " C  ~  " + String(tempF) + " F");
-              //Serial.print("Humidity: ");
-              //Serial.print(humi);
-              //Serial.print("%");
-
-              //Serial.print("  |  ");
-
-              //Serial.println("Temperature: ");
-              //Serial.print(tempC);
-              //Serial.print(" C  ~  ");
-              //Serial.print(tempF);
-              //Serial.println(" F");
-              
             }
 
             MQ135.update(); // Update data, the arduino will be read the voltage on the analog pin
