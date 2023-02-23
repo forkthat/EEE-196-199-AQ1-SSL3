@@ -18,7 +18,7 @@ MQUnifiedsensor MQ135(placa, Voltage_Resolution, ADC_Bit_Resolution, pin, type);
 // ================== SDS011 ========================
 #include <SoftwareSerial.h>
 #include <Sds011.h>
-#define SDS_PIN_RX 16
+#define SDS_PIN_RX 16 -> asff
 #define SDS_PIN_TX 17
 #ifdef ESP32
 HardwareSerial& serialSDS(Serial2);
@@ -78,17 +78,13 @@ int pm10;
 
 void start_SDS() {
     Serial.println("Start wakeup SDS011");
-
     if (sds011.set_sleep(false)) { is_SDS_running = true; }
-
     Serial.println("End wakeup SDS011");
 }
 
 void stop_SDS() {
     Serial.println("Start sleep SDS011");
-
     if (sds011.set_sleep(true)) { is_SDS_running = false; }
-
     Serial.println("End sleep SDS011");
 }
 
