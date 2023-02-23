@@ -18,7 +18,7 @@ MQUnifiedsensor MQ135(placa, Voltage_Resolution, ADC_Bit_Resolution, pin, type);
 // ================== SDS011 ========================
 #include <SoftwareSerial.h>
 #include <Sds011.h>
-#define SDS_PIN_RX 16 -> asff
+#define SDS_PIN_RX 16
 #define SDS_PIN_TX 17
 #ifdef ESP32
 HardwareSerial& serialSDS(Serial2);
