@@ -244,6 +244,8 @@ void setup() {
     // ================== MQ135 ========================
     //Set math model to calculate the PPM concentration and the value of constants
     MQ135.setRegressionMethod(1); //_PPM =  a*ratio^b
+    MQ135.setA(110.47); 
+    MQ135.setB(-2.862); 
     MQ135.init(); 
     Serial.print("Calibrating please wait.");
     float calcR0 = 0;
@@ -264,7 +266,6 @@ void setup() {
         Serial.println("Warning: Conection issue founded, R0 is zero (Analog pin with short circuit to ground) please check your wiring and supply");
         while(1);
     }
-    
     MQ135.serialDebug(false);
 
     // ====================== SDS011 =======================
@@ -292,6 +293,7 @@ void setup() {
 void loop() {
     // it will run the user scheduler as well
     mesh.update();
-
+    MQ135.update();
+    
     loop_SDS();
 }

@@ -1,11 +1,3 @@
-//************************************************************
-// this is a simple example that uses the painlessMesh library
-//
-// 1. sends a silly message to every node on the mesh at a random time between 1 and 5 seconds
-// 2. prints anything it receives to Serial.print
-//
-//
-//************************************************************
 #include "painlessMesh.h"
 #include <Arduino_JSON.h>
 
@@ -44,13 +36,8 @@ String getReadings () {
   jsonReadings["tempC"] = dht_sensor.readTemperature();
   jsonReadings["tempF"] = dht_sensor.readTemperature(true);
 
-  // check whether the reading is successful or not
-  // if ( isnan(jsonReadings["hum"]) || isnan(jsonReadings["tempC"]) || isnan(jsonReadings["tempF"])) {
-  //   return "Failed to read from DHT sensor!";
-  // } else {
   readings = JSON.stringify(jsonReadings);
   return readings;
-  // }
 }
 
 void sendMessage() {
@@ -112,6 +99,5 @@ void setup() {
 }
 
 void loop() {
-  // it will run the user scheduler as well
   mesh.update();
 }
