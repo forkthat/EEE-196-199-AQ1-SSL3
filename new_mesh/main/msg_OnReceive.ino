@@ -16,16 +16,9 @@ void receivedCallback_DHT22( uint32_t from, String &msg ) {
   double tempC = myObject["tempC"];
   double tempF = myObject["tempF"];
 
-  Serial.print("Node: ");
-  Serial.println(node);
-  Serial.print("Temperature: ");
-  Serial.print(tempC);
-  Serial.print(" C, ");
-  Serial.print(tempF);
-  Serial.println(" F");
-  Serial.print("Humidity: ");
-  Serial.print(hum);
-  Serial.println(" %");
+  Serial.printf("Node: %i\n", node);
+  Serial.printf("Temperature: %f C; %f F\n", tempC, tempF);
+  Serial.printf("Humidity: %f \%\n", hum);
 }
 
 void receivedCallback_MQ135( uint32_t from, String &msg ) {
