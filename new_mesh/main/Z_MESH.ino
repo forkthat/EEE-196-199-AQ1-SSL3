@@ -4,42 +4,17 @@ https://randomnerdtutorials.com/esp-mesh-esp32-esp8266-painlessmesh/
 ####################################################################
 */
 
-#include "painlessMesh.h"
-
-// MESH_PREFIX: name of the node
-#define MESH_PREFIX "AQ1_SSL3_"
-#define MESH_PASSWORD "somethingSneaky"
-#define MESH_PORT 5555
-
-/*
-####################################################################
-Change node number for each node
-TODO: visually label each node
-####################################################################
-*/
-#define NODE_NUMBER 2
-
-// Run tasks in the background
-Scheduler userScheduler;
-painlessMesh mesh;
-
-// call sendMessage() function every 1 second as long as
-// the program is running
-Task taskSendMessage(TASK_SECOND * 1, TASK_FOREVER, &sendMessage);
-
-// 
-void sendMessage() {
-  String hi = "Hi from Node ";
-  String msg = hi + NODE_NUMBER;
-  // msg += mesh.getNodeId();
-  mesh.sendBroadcast(msg);
-  taskSendMessage.setInterval(random(TASK_SECOND * 1, TASK_SECOND * 5));
-}
+// void sendMessage() {
+//   String msg = "Hi from node1";
+//   msg += mesh.getNodeId();
+//   mesh.sendBroadcast( msg );
+//   taskSendMessage.setInterval( random( TASK_SECOND * 1, TASK_SECOND * 5 ));
+// }
 
 // Runs when a message is received on the mesh network
-void receivedCallback( uint32_t from, String &msg ) {
-  Serial.printf("startHere: Received from %u msg=%s\n", from, msg.c_str());
-}
+// void receivedCallback( uint32_t from, String &msg ) {
+//   Serial.printf("startHere: Received from %u msg=%s\n", from, msg.c_str());
+// }
 
 // Runs when a new node joins the mesh network
 void newConnectionCallback(uint32_t nodeId) {
@@ -56,20 +31,26 @@ void nodeTimeAdjustedCallback(int32_t offset) {
   Serial.printf("Adjusted time %u. Offset = %d\n", mesh.getNodeTime(),offset);
 }
 
-void setup_mesh() {
+void setup_MESH() {
   // mesh.setDebugMsgTypes( ERROR | MESH_STATUS | CONNECTION | SYNC | COMMUNICATION | GENERAL | MSG_TYPES | REMOTE ); // all types on
   mesh.setDebugMsgTypes( ERROR | STARTUP );  // set before init() so that you can see startup messages
 
   mesh.init(MESH_PREFIX, MESH_PASSWORD, &userScheduler, MESH_PORT);
-  mesh.onReceive(&receivedCallback);
+
+  mesh.onReceive(&receivedCallback_DHT22);
+  mesh.onReceive(&receivedCallback_MQ135);
+
   mesh.onNewConnection(&newConnectionCallback);
   mesh.onChangedConnections(&changedConnectionCallback);
   mesh.onNodeTimeAdjusted(&nodeTimeAdjustedCallback);
 
-  userScheduler.addTask( taskSendMessage );
-  taskSendMessage.enable();
+  userScheduler.addTask(taskSendMessage_DHT22);
+  userScheduler.addTask(taskSendMessage_MQ135);
+
+  taskSendMessage_DHT22.enable();
+  taskSendMessage_MQ135.enable();
 }
 
-void loop_mesh() {
+void loop_MESH() {
   mesh.update();
 }
