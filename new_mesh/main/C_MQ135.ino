@@ -2,7 +2,9 @@ Task taskSendMessage_MQ135(TASK_SECOND * 5, TASK_FOREVER, &sendMessage_MQ135);
 MQUnifiedsensor MQ135(placa, Voltage_Resolution, ADC_Bit_Resolution, pin, type);
 
 String getReadings_MQ135(){
-  JSONVar jsonReadings;
+  // JSONVar jsonReadings;
+  DynamicJsonDocument doc(512);
+  
   MQ135.update();
 
   MQ135.setA(605.18); MQ135.setB(-3.937);
@@ -10,10 +12,14 @@ String getReadings_MQ135(){
   MQ135.setA(110.47); MQ135.setB(-2.862);
   float CO2 = MQ135.readSensor()*1000;
   
-  jsonReadings["CO"] = CO;
-  jsonReadings["CO2"] = CO2;
-  readings = JSON.stringify(jsonReadings);
-  return readings;
+  // jsonReadings["CO"] = CO;
+  // jsonReadings["CO2"] = CO2;
+  doc["node"] = nodeNumber;
+  doc["CO"] = CO;
+  doc["CO2"] = CO2;
+
+  // readings = JSON.stringify(jsonReadings);
+  return doc.as<String>();
 }
 
 void setup_MQ135(){

@@ -12,10 +12,17 @@ Scheduler userScheduler;                      // to control your personal task
 painlessMesh mesh;
 
 // ####################################################################
+// JSON
+// ####################################################################
+
+// #include <Arduino_JSON.h>
+#include <ArduinoJson.h>
+#include <math.h>
+
+// ####################################################################
 // DHT22
 // ####################################################################
 
-#include <Arduino_JSON.h>
 #include <DHT.h>
 
 #define DHT_SENSOR_PIN  21                    // ESP32 pin GIOP21 connected to DHT22 sensor
@@ -23,7 +30,7 @@ painlessMesh mesh;
 
 String readings;
 
-// ########   NODE NUMBER   ########
+// #########################   NODE NUMBER   ##########################
 int nodeNumber = 1;                           // Change node number for each node and visually label each node
 
 // ####################################################################
@@ -48,16 +55,16 @@ double CO2 = (0);
 void setup() {
   Serial.begin(115200);
   while (!Serial) continue;
-  
+
+  setup_JSON();
   setup_DHT22();
   setup_MQ135();
-
   setup_MESH();
 }
 
 void loop() {
+  loop_JSON();
   loop_DHT22();
   loop_MQ135();
-
   loop_MESH();
 }

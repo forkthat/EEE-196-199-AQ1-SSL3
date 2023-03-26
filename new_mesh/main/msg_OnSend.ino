@@ -1,7 +1,7 @@
 void sendMessage_DHT22() {
   String msg = getReadings_DHT22();
   mesh.sendBroadcast(msg);
-  taskSendMessage_DHT22.setInterval(TASK_SECOND * 2);
+  taskSendMessage_DHT22.setInterval(TASK_SECOND * 5);
 }
 
 void sendMessage_MQ135() {

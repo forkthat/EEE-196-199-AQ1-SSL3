@@ -37,8 +37,7 @@ void setup_MESH() {
 
   mesh.init(MESH_PREFIX, MESH_PASSWORD, &userScheduler, MESH_PORT);
 
-  mesh.onReceive(&receivedCallback_DHT22);
-  mesh.onReceive(&receivedCallback_MQ135);
+  mesh.onReceive(&receivedCallback);
 
   mesh.onNewConnection(&newConnectionCallback);
   mesh.onChangedConnections(&changedConnectionCallback);
