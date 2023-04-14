@@ -4,7 +4,7 @@
 
 #include "painlessMesh.h"
 
-#define MESH_PREFIX "AQ1_SSL3_"               // MESH_PREFIX: name of the node
+#define MESH_PREFIX "AQ1_SSL3_"               // MESH_PREFIX: name of the node network
 #define MESH_PASSWORD "somethingSneaky"
 #define MESH_PORT 5555
 
@@ -20,6 +20,18 @@ painlessMesh mesh;
 #include <math.h>
 
 // ####################################################################
+// NODE NUMBER AND SENSOR TIMINGS
+// ####################################################################
+
+int nodeNumber = 2;                                 // Change node number for each node and visually label each node
+
+auto taskSendMsg_DHT22_seconds = TASK_SECOND * 30;
+auto taskSendMsg_MQ135_seconds = TASK_SECOND * 30;
+
+int customWorkingPeriod_SDS011_minutes = 1;
+auto taskSendMsg_SDS011_seconds = TASK_SECOND * 60;
+
+// ####################################################################
 // DHT22
 // ####################################################################
 
@@ -29,9 +41,6 @@ painlessMesh mesh;
 #define DHT_SENSOR_TYPE DHT22
 
 String readings;
-
-// #########################   NODE NUMBER   ##########################
-int nodeNumber = 1;                           // Change node number for each node and visually label each node
 
 // ####################################################################
 // MQ135
@@ -49,16 +58,22 @@ int nodeNumber = 1;                           // Change node number for each nod
 double CO2 = (0);
 
 // ####################################################################
+// SDS011
+// ####################################################################
+
+#include "SdsDustSensor.h"
+
+// ####################################################################
 // SETUP AND LOOP
 // ####################################################################
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   while (!Serial) continue;
-
   setup_JSON();
   setup_DHT22();
   setup_MQ135();
+  setup_SDS011();
   setup_MESH();
 }
 
@@ -66,5 +81,6 @@ void loop() {
   loop_JSON();
   loop_DHT22();
   loop_MQ135();
+  loop_SDS011();
   loop_MESH();
 }
