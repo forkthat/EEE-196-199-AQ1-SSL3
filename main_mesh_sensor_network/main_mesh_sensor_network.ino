@@ -23,7 +23,7 @@ painlessMesh mesh;
 // NODE NUMBER AND SENSOR TIMINGS
 // ####################################################################
 
-int nodeNumber = 2;                                 // Change node number for each node and visually label each node
+int nodeNumber = 2;                           // Change node number for each node and visually label each node
 
 auto taskSendMsg_DHT22_seconds = TASK_SECOND * 30;
 auto taskSendMsg_MQ135_seconds = TASK_SECOND * 30;
