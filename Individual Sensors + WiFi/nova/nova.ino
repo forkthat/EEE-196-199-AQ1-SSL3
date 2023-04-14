@@ -100,12 +100,13 @@ void loop()
         Serial.println("Begin Handling SDS011 query data");
         int pm25;
         int pm10;
+        Serial.print("n = "); Serial.println(n);
         if (sds011.filter_data(n, pm25_table, pm10_table, pm25, pm10) &&
             !isnan(pm10) && !isnan(pm25)) {
             Serial.print("PM10: ");
-            Serial.println(float(pm10);
+            Serial.println(float(pm10) / 10);
             Serial.print("PM2.5: ");
-            Serial.println(float(pm25);
+            Serial.println(float(pm25) / 10);
         }
         Serial.println("End Handling SDS011 query data");
         });
