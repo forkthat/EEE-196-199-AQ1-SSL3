@@ -12,9 +12,12 @@ https://randomnerdtutorials.com/esp-mesh-esp32-esp8266-painlessmesh/
 // }
 
 // Runs when a message is received on the mesh network
-// void receivedCallback( uint32_t from, String &msg ) {
-//   Serial.printf("startHere: Received from %u msg=%s\n", from, msg.c_str());
-// }
+void receivedCallback( uint32_t from, String &msg ) {
+  Serial.printf("startHere: Received from %u msg=%s\n", from, msg.c_str());
+  if (Serial2.available()) {
+    Serial2.write(msg.c_str());
+  }
+}
 
 // Runs when a new node joins the mesh network
 void newConnectionCallback(uint32_t nodeId) {
@@ -41,13 +44,13 @@ void setup_MESH() {
   mesh.onChangedConnections(&changedConnectionCallback);
   mesh.onNodeTimeAdjusted(&nodeTimeAdjustedCallback);
 
-  userScheduler.addTask(taskSendMessage_DHT22);
-  userScheduler.addTask(taskSendMessage_MQ135);
-  userScheduler.addTask(taskSendMessage_SDS011);
+  // userScheduler.addTask(taskSendMessage_DHT22);
+  // userScheduler.addTask(taskSendMessage_MQ135);
+  // userScheduler.addTask(taskSendMessage_SDS011);
 
-  taskSendMessage_DHT22.enable();
-  taskSendMessage_MQ135.enable();
-  taskSendMessage_SDS011.enable();
+  // taskSendMessage_DHT22.enable();
+  // taskSendMessage_MQ135.enable();
+  // taskSendMessage_SDS011.enable();
 }
 
 void loop_MESH() {

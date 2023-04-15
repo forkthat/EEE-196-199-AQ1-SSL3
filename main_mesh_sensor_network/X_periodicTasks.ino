@@ -4,9 +4,11 @@ Task taskSendMessage_SDS011(taskSendMsg_SDS011_seconds, TASK_FOREVER, &SendMessa
 
 /*
   ####################################################################
-  TODO: 
+  DONE: 
     Use SINGLE message to send message to mesh-facing gateway ESP32
     https://gitlab.com/painlessMesh/painlessMesh/-/wikis/home
+
+    on message receive, send data to gateway
   ####################################################################
 */
 
