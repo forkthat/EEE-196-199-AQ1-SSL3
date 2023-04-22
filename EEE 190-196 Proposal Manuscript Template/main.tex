@@ -33,7 +33,7 @@
 %\usepackage{float}
 \usepackage{circuitikz}
 \usepackage[backend=bibtex,bibstyle=ieee,citestyle=numeric-comp]{biblatex}
-\addbibresource{bibfile.bib}
+\addbibresource{bibliography/bibfile.bib}
 \usepackage{pgfplots}
 %\usepackage{arydshln}
 \pgfplotsset{width=7cm,compat=1.5.1}
@@ -68,24 +68,25 @@
 %%
 
 %% Place project title here
-\title{EEE 190 Proposal Manuscript Template} 
+\title{Evaluation of Performance Parameters of Star and Partial Mesh Topology by Designing an Indoor Air Quality Monitoring (IAQM) System based on IoT for COVID-19 Application} 
 
 %%
 %% Author information
 
 \author{
-Charleston Dale M. Ambatali\\ 2011-09217\\ \emph{BS Electronics and Communications Engineering} \and
+Jean Francois Thomas Berin\\ 2019-05739\\ \emph{BS Electronics Engineering} \\ \\
+Dennis Salvador Valeza Ignacio\\ 2019-02486\\ \emph{BS Computer Engineering} \\ \\
+Stephen Nap Saroca\\ 2019-05797\\ \emph{BS Electronics Engineering}
 }
 
 %%
 %% Month and year of submission/graduation
-\degreeyear{2019} 
-\degreesemester{December} 
+\degreeyear{2023} 
+\degreesemester{January} 
 
 % Put your advisers here:
-\chair{Joel Joseph S. Marciano}
-\othermembers{Adviser 2\\ 
-Adviser 3} 
+\chair{Jaybie A. de Guzman}
+\othermembers{\ \\ \ } 
 \numberofmembers{3}
 
 \field{Electrical/Computer/Electronics and Communications Engineering} 
@@ -95,28 +96,16 @@ Adviser 3}
 
 % uncomment the following four lines once you need to submit your approved 198/199 manuscript after the final assessment
 \newgeometry{verbose,tmargin=0.5in,bmargin=1in,lmargin=0.5in,rmargin=0.5in}
-\input{EEE Documentation/198_199_frontmatter/Page1_UP_IPR_Disclosure_Form}
-\input{EEE Documentation/198_199_frontmatter/Approval_Form}
-\input{EEE Documentation/198_199_frontmatter/Page2_UP_Permissions_Page}
-\input{EEE Documentation/198_199_frontmatter/Acknowledgement}
+%\input{EEE Documentation/198_199_frontmatter/Page1_UP_IPR_Disclosure_Form}
+%\input{EEE Documentation/198_199_frontmatter/Approval_Form}
+%\input{EEE Documentation/198_199_frontmatter/Page2_UP_Permissions_Page}
+%\input{EEE Documentation/198_199_frontmatter/Acknowledgement}
 \restoregeometry
 
 \begin{abstract} 
 
 %Your abstract goes here...
-In a \emph{single} well-written paragraph, this is what we'd like to do.  Try to cover Need, Solution, Differentiation, Benefit (NSDB).  Use the content of this template as an example for formatting your proposal document, \textbf{NOT} as a strict guide for the flow of your discussion and what your proposal must contain.
-
-The proposal document must contain the following: 
-\begin{itemize}
-    \item Abstract
-    \item Introduction (including background and motivation)
-    \item Review of Related Work
-    \item Problem Statement and Objectives
-    \item Proposed Methodology with Preliminary Results
-    \item Proposed Timeline and Deliverables
-\end{itemize}
-
-Note that the Introduction  and Review of Related Work chapter titles need not be as specified, but covers such content.
+The COVID-19 pandemic caused by the SARS-CoV-2 virus has induced the increase of time spent indoors by the general population.  The disease is transmitted through the inhalation of droplets and small particles in the air containing the virus.  With regards to this, poor indoor air quality has been discovered to influence higher infection rates of the disease in humans.  Indoor air quality monitoring (IAQM) systems employing Internet-of-Things (IoT) technology have emerged to aid in the detection of indoor air pollution (IAP).  However, most of these existing systems do not account for COVID-19 parameters and have issues regarding data transmission and power management.  This project consists of a real-time IoT-based IAQM system capable of monitoring air quality parameters related to COVID-19.  The sensors used are the Nova PM sensor SDS011, MQ135, and DHT22 which will be integrated to ESP32, a microcontroller unit, to create a sensor node.  The sensor nodes of the system measure specific air quality parameters which are PM2.5, PM10, carbon monoxide (CO), temperature, and relative humidity.  The sensor nodes are connected to a gateway by using the star or partial mesh topology for comparison.  Then, the data acquired by the gateway is sent to a Blynk database server for data visualization, monitoring, and analysis.  Throughput, latency, packet loss, power consumption, and mean time between failure (MTBF) were measured to evaluate the IAQM system.  For further testing, the number of sensor nodes were varied to analyze its impact on the performance of the system.  The outcome of this project could benefit the educational community as there is already an ongoing transition from online classes to face-to-face setup while still in the COVID-19 pandemic.
 
 \abstractsignature\end{abstract}
 
@@ -131,13 +120,10 @@ Note that the Introduction  and Review of Related Work chapter titles need not b
 \cleardoublepage{}
 \chapter{Introduction\label{cha:Introduction}}
 
-This part of your proposal introduces the different concepts needed to be known by the reader for them to understand the problem you are trying to solve. Note that this may be the last chapter you will write when writing the proposal since it covers the summary of the entire proposal.
-
-This chapter title need not be as specified, but covers such content.
-
-
-\section{Section 1-1}
+\section{COVID-19 and its Relevance to Air Quality}
 \label{section:sec01_01}
+
+The COVID-19 pandemic caused by the contagious SARS-CoV-2 virus which severely affects the human respiratory system, triggered a disruption in most of the world?s economy for tourism and retail and forced the implementation of stringent containment measures \cite{RePEc:imf:imfwpa:2021/018}. The COVID-19 disease gets transmitted when people breathe air contaminated by droplets and small airborne particles containing the virus. The risk of breathing the disease is highest when people are in close proximity.  It is then crucial to maintain a considerable distance from others and for people to stay most of the time inside their homes. Unfortunately, they can also be inhaled over longer distances, even when indoors \cite{doi:10.1126/science.abd9149} \cite{https://doi.org/10.1111/ina.12751}.
 
 
 \cleardoublepage{}

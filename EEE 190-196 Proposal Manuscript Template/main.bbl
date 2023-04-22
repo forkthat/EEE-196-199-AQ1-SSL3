@@ -1,0 +1,273 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{none/global//global/global}
+  \entry{doi:10.1126/science.abd9149}{article}{}
+    \name{author}{7}{}{%
+      {{hash=WCC}{%
+         family={Wang},
+         familyi={W\bibinitperiod},
+         given={Chia\bibnamedelima C.},
+         giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=PKA}{%
+         family={Prather},
+         familyi={P\bibinitperiod},
+         given={Kimberly\bibnamedelima A.},
+         giveni={K\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Sznitman},
+         familyi={S\bibinitperiod},
+         given={Josué},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=JJL}{%
+         family={Jimenez},
+         familyi={J\bibinitperiod},
+         given={Jose\bibnamedelima L.},
+         giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=LSS}{%
+         family={Lakdawala},
+         familyi={L\bibinitperiod},
+         given={Seema\bibnamedelima S.},
+         giveni={S\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=TZ}{%
+         family={Tufekci},
+         familyi={T\bibinitperiod},
+         given={Zeynep},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=MLC}{%
+         family={Marr},
+         familyi={M\bibinitperiod},
+         given={Linsey\bibnamedelima C.},
+         giveni={L\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{WCC+1}
+    \strng{fullhash}{WCCPKASJJJLLSSTZMLC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    The COVID-19 pandemic has highlighted controversies and unknowns about how
+  respiratory pathogens spread between hosts. Traditionally, it was thought
+  that respiratory pathogens spread between people through large droplets
+  produced in coughs and through contact with contaminated surfaces (fomites).
+  However, several respiratory pathogens are known to spread through small
+  respiratory aerosols, which can float and travel in air flows, infecting
+  people who inhale them at short and long distances from the infected person.
+  Wang et al. review recent advances in understanding airborne transmission
+  gained from studying the spread of severe acute respiratory syndrome
+  coronavirus 2 (SARS-CoV-2) infections and other respiratory pathogens. The
+  authors suggest that airborne transmission may be the dominant form of
+  transmission for several respiratory pathogens, including SARS-CoV-2, and
+  that further understanding of the mechanisms underlying infection from the
+  airborne route will better inform mitigation measures. —GKA A Review
+  discusses the scientific basis of and factors controlling airborne
+  transmission of respiratory viruses including coronavirus. The COVID-19
+  pandemic has revealed critical knowledge gaps in our understanding of and a
+  need to update the traditional view of transmission pathways for respiratory
+  viruses. The long-standing definitions of droplet and airborne transmission
+  do not account for the mechanisms by which virus-laden respiratory droplets
+  and aerosols travel through the air and lead to infection. In this Review, we
+  discuss current evidence regarding the transmission of respiratory viruses by
+  aerosols—how they are generated, transported, and deposited, as well as the
+  factors affecting the relative contributions of droplet-spray deposition
+  versus aerosol inhalation as modes of transmission. Improved understanding of
+  aerosol transmission brought about by studies of severe acute respiratory
+  syndrome coronavirus 2 (SARS-CoV-2) infection requires a reevaluation of the
+  major transmission pathways for other respiratory viruses, which will allow
+  better-informed controls to reduce airborne transmission.%
+    }
+    \verb{doi}
+    \verb 10.1126/science.abd9149
+    \endverb
+    \verb{eprint}
+    \verb https://www.science.org/doi/pdf/10.1126/science.abd9149
+    \endverb
+    \field{number}{6558}
+    \field{pages}{eabd9149}
+    \field{title}{Airborne transmission of respiratory viruses}
+    \verb{url}
+    \verb https://www.science.org/doi/abs/10.1126/science.abd9149
+    \endverb
+    \field{volume}{373}
+    \field{journaltitle}{Science}
+    \field{year}{2021}
+  \endentry
+
+  \entry{RePEc:imf:imfwpa:2021/018}{report}{}
+    \name{author}{2}{}{%
+      {{hash=FD}{%
+         family={Furceri},
+         familyi={F\bibinitperiod},
+         given={Davide},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=OMJD}{%
+         family={Ostry},
+         familyi={O\bibinitperiod},
+         given={Mr. Jonathan\bibnamedelima David},
+         giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim
+  D\bibinitperiod},
+      }}%
+    }
+    \keyw{Recession; Resilience; WALS; BMA; Model-Averaging.; WP; output
+  performance; output loss; credit mark}
+    \strng{namehash}{FDOMJD1}
+    \strng{fullhash}{FDOMJD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    While the COVID-19 pandemic is affecting all countries, output losses vary
+  considerably across countries. We provide a first analysis of robust
+  determinants of observed initial output losses using model-averaging
+  techniques—Weighted Average Least Squares and Bayesian Model Averaging. The
+  results suggest that countries that experienced larger output losses are
+  those with lower GDP per capita, more stringent containment measures, higher
+  deaths per capita, higher tourism dependence, more liberalized financial
+  markets, higher pre-crisis growth, lower fiscal stimulus, higher ethnic and
+  religious fractionalization and more democratic regimes. With respect to the
+  first factor, lower resilience of poorer countries reflects the higher
+  economic costs of containment measures and deaths in such countries and less
+  effective fiscal and monetary policy stimulus.%
+    }
+    \field{number}{2021/018}
+    \field{title}{{Initial Output Losses from the Covid-19 Pandemic: Robust
+  Determinants}}
+    \verb{url}
+    \verb https://ideas.repec.org/p/imf/imfwpa/2021-018.html
+    \endverb
+    \list{institution}{1}{%
+      {International Monetary Fund}%
+    }
+    \field{type}{IMF Working Papers}
+    \field{month}{01}
+    \field{year}{2021}
+  \endentry
+
+  \entry{https://doi.org/10.1111/ina.12751}{article}{}
+    \name{author}{10}{}{%
+      {{hash=MSL}{%
+         family={Miller},
+         familyi={M\bibinitperiod},
+         given={Shelly\bibnamedelima L.},
+         giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=NWW}{%
+         family={Nazaroff},
+         familyi={N\bibinitperiod},
+         given={William\bibnamedelima W},
+         giveni={W\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=JJL}{%
+         family={Jimenez},
+         familyi={J\bibinitperiod},
+         given={Jose\bibnamedelima L.},
+         giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=BA}{%
+         family={Boerstra},
+         familyi={B\bibinitperiod},
+         given={Atze},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=BG}{%
+         family={Buonanno},
+         familyi={B\bibinitperiod},
+         given={Giorgio},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=DSJ}{%
+         family={Dancer},
+         familyi={D\bibinitperiod},
+         given={Stephanie\bibnamedelima J.},
+         giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=KJ}{%
+         family={Kurnitski},
+         familyi={K\bibinitperiod},
+         given={Jarek},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=MLC}{%
+         family={Marr},
+         familyi={M\bibinitperiod},
+         given={Linsey\bibnamedelima C.},
+         giveni={L\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=ML}{%
+         family={Morawska},
+         familyi={M\bibinitperiod},
+         given={Lidia},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=NC}{%
+         family={Noakes},
+         familyi={N\bibinitperiod},
+         given={Catherine},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \keyw{aerosol transmission, infectious disease, pandemic, risk,
+  ventilation, virus}
+    \strng{namehash}{MSL+1}
+    \strng{fullhash}{MSLNWWJJLBABGDSJKJMLCMLNC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    Abstract During the 2020 COVID-19 pandemic, an outbreak occurred following
+  attendance of a symptomatic index case at a weekly rehearsal on 10 March of
+  the Skagit Valley Chorale (SVC). After that rehearsal, 53 members of the SVC
+  among 61 in attendance were confirmed or strongly suspected to have
+  contracted COVID-19 and two died. Transmission by the aerosol route is
+  likely; it appears unlikely that either fomite or ballistic droplet
+  transmission could explain a substantial fraction of the cases. It is vital
+  to identify features of cases such as this to better understand the factors
+  that promote superspreading events. Based on a conditional assumption that
+  transmission during this outbreak was dominated by inhalation of respiratory
+  aerosol generated by one index case, we use the available evidence to infer
+  the emission rate of aerosol infectious quanta. We explore how the risk of
+  infection would vary with several influential factors: ventilation rate,
+  duration of event, and deposition onto surfaces. The results indicate a
+  best-estimate emission rate of 970 ± 390 quanta/h. Infection risk would be
+  reduced by a factor of two by increasing the aerosol loss rate to 5 h−1 and
+  shortening the event duration from 2.5 to 1 h.%
+    }
+    \verb{doi}
+    \verb https://doi.org/10.1111/ina.12751
+    \endverb
+    \verb{eprint}
+    \verb https://onlinelibrary.wiley.com/doi/pdf/10.1111/ina.12751
+    \endverb
+    \field{number}{2}
+    \field{pages}{314\bibrangedash 323}
+    \field{title}{Transmission of SARS-CoV-2 by inhalation of respiratory
+  aerosol in the Skagit Valley Chorale superspreading event}
+    \verb{url}
+    \verb https://onlinelibrary.wiley.com/doi/abs/10.1111/ina.12751
+    \endverb
+    \field{volume}{31}
+    \field{journaltitle}{Indoor Air}
+    \field{year}{2021}
+  \endentry
+\enddatalist
+\endinput

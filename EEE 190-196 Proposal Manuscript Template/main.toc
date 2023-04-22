@@ -1,0 +1,21 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{List of Figures}{ii}{}%
+\contentsline {chapter}{List of Tables}{iii}{}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{}%
+\contentsline {section}{\numberline {1.1}COVID-19 and its Relevance to Air Quality}{1}{}%
+\contentsline {chapter}{\numberline {2}Related Work}{2}{}%
+\contentsline {section}{\numberline {2.1}Section 2-1}{2}{}%
+\contentsline {section}{\numberline {2.2}Section 2-2}{2}{}%
+\contentsline {chapter}{\numberline {3}Problem Statement and Objectives }{3}{}%
+\contentsline {section}{\numberline {3.1}Problem Statement}{3}{}%
+\contentsline {section}{\numberline {3.2}Objectives of the Project}{3}{}%
+\contentsline {section}{\numberline {3.3}Scopes and Limitations}{3}{}%
+\contentsline {chapter}{\numberline {4}Methodology}{4}{}%
+\contentsline {section}{\numberline {4.1}Displaying an Image using includegraphics}{5}{}%
+\contentsline {section}{\numberline {4.2}Generating an Image using circuitikz}{5}{}%
+\contentsline {section}{\numberline {4.3}Generating a Table}{6}{}%
+\contentsline {section}{\numberline {4.4}Making a Citation}{7}{}%
+\contentsline {chapter}{\numberline {5}Preliminary Findings}{8}{}%
+\contentsline {chapter}{\numberline {6}Project Schedule and Deliverables}{9}{}%
+\contentsline {section}{\numberline {6.1}Gantt Chart }{9}{}%
+\contentsline {section}{\numberline {6.2}Halfway-point Deliverables}{9}{}%
