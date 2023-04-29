@@ -1,0 +1,17 @@
+ArduinoHttpClient
+Arduino_JSON
+Adafruit Unified Sensor
+ArduinoJson
+AsyncTCP
+Blynk
+DHT sensor library
+ESPMQTTClient
+EspSoftwareSerial
+MQUnifiedsensor
+Nova Fitness Sds dust sensors library
+Painless Mesh
+PubSubClient
+TBPubSubClient
+TaskScheduler
+ThingsBoard
+WiFi
