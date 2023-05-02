@@ -23,7 +23,7 @@ painlessMesh mesh;
 // NODE NUMBER AND SENSOR TIMINGS
 // ####################################################################
 
-int nodeNumber = 1;                           // Change node number for each node and visually label each node
+int nodeNumber = 2;                           // Change node number for each node and visually label each node
 
 auto taskSendMsg_DHT22_seconds = TASK_SECOND * 30;
 auto taskSendMsg_MQ135_seconds = TASK_SECOND * 30;
@@ -68,10 +68,10 @@ double CO2 = (0);
 // ####################################################################
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   while(!Serial) continue;
   
-  setup_JSON();
+  // setup_JSON();
   setup_DHT22();
   setup_MQ135();
   setup_SDS011();
@@ -79,7 +79,7 @@ void setup() {
 }
 
 void loop() {
-  loop_JSON();
+  // loop_JSON();
   loop_DHT22();
   loop_MQ135();
   loop_SDS011();
