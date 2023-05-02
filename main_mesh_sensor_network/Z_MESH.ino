@@ -28,7 +28,7 @@ void changedConnectionCallback() {
 
 // Runs when the network adjusts the time, so that all nodes are synced
 void nodeTimeAdjustedCallback(int32_t offset) {
-  Serial.printf("Adjusted time %u. Offset = %d\n", mesh.getNodeTime(),offset);
+  // Serial.printf("Adjusted time %u. Offset = %d\n", mesh.getNodeTime(),offset);
 }
 
 void setup_MESH() {
