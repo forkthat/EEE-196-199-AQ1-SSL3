@@ -1,7 +1,8 @@
 MQUnifiedsensor MQ135(placa, Voltage_Resolution, ADC_Bit_Resolution, pin, type);
 
 String getReadings_MQ135(){
-  DynamicJsonDocument doc(512);
+  StaticJsonDocument<128> doc;
+  // DynamicJsonDocument doc(512);
   
   MQ135.update();
 

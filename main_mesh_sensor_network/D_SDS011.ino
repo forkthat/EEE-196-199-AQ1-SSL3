@@ -7,7 +7,8 @@ void saveReadings_SDS011(float pm25_new, float pm10_new){
 }
 
 String getReadings_SDS011(){
-  DynamicJsonDocument doc(512);
+  StaticJsonDocument<128> doc;
+  // DynamicJsonDocument doc(512);
 
   doc["node"] = nodeNumber;
   doc["PM 2.5"] = pm25;

@@ -1,7 +1,8 @@
 DHT dht_sensor(DHT_SENSOR_PIN, DHT_SENSOR_TYPE);
 
 String getReadings_DHT22(){
-  DynamicJsonDocument doc(512);
+  StaticJsonDocument<128> doc;
+  // DynamicJsonDocument doc(512);
 
   doc["node"] = nodeNumber;
   doc["hum"] = dht_sensor.readHumidity();

@@ -9,7 +9,8 @@ void setup_JSON(){
   // StaticJsonObject allocates memory on the stack, it can be
   // replaced by DynamicJsonDocument which allocates in the heap.
   // 
-  DynamicJsonDocument doc(512);
+  StaticJsonDocument<128> doc;
+  // DynamicJsonDocument doc(512);
 }
 
 void loop_JSON(){
