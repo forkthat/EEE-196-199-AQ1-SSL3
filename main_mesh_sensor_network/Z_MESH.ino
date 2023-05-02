@@ -23,7 +23,7 @@ void newConnectionCallback(uint32_t nodeId) {
 
 // Runs when a new node joins or leaves the network
 void changedConnectionCallback() {
-  Serial.printf("Changed connections\n");
+  // Serial.printf("Changed connections\n");
 }
 
 // Runs when the network adjusts the time, so that all nodes are synced

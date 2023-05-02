@@ -18,6 +18,8 @@ TODO:
 ####################################################################
 */
 
+#include <ArduinoJson.h>
+
 #define RXD2 16
 #define TXD2 17
 
@@ -32,15 +34,5 @@ void setup(){
 }
 
 void loop(){
-  // // read it from USB and send it to hSerial 
-  // if (Serial.available()){ 
-  //   hSerial.write(Serial.read()); 
-  // }
-
-  // // read it from hSerial and send it to USB
-  // if (hSerial.available()){ 
-  //   Serial.write(hSerial.read()); 
-  // }
-
   loop_MESH();
 }
