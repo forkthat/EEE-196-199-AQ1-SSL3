@@ -30,13 +30,6 @@ void loop(){
 
     if (err == DeserializationError::Ok)
     {
-      // Print the values
-      // (we must use as<T>() to resolve the ambiguity)
-      // Serial.print("timestamp = ");
-      // Serial.println(doc["timestamp"].as<long>());
-      // Serial.print("value = ");
-      // Serial.println(doc["value"].as<int>());
-
       int node = doc["node"];
       double tempC = doc["tempC"];
       double tempF = doc["tempF"];
