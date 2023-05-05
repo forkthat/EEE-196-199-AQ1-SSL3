@@ -2,7 +2,6 @@ MQUnifiedsensor MQ135(placa, Voltage_Resolution, ADC_Bit_Resolution, pin, type);
 
 String getReadings_MQ135(){
   StaticJsonDocument<128> doc;
-  // DynamicJsonDocument doc(512);
   
   MQ135.update();
 
@@ -13,6 +12,9 @@ String getReadings_MQ135(){
   float CO2 = MQ135.readSensor() * 1000;
   
   doc["node"] = nodeNumber;
+  doc["msg_success"] = msg_sent_success;
+  doc["msg_fail"] = msg_sent_fail;
+
   doc["CO"] = CO;
   doc["CO2"] = CO2;
 
