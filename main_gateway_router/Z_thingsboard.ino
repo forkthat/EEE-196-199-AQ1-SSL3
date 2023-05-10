@@ -44,7 +44,5 @@ void loop_thingsboard()
     tb.sendTelemetryFloat("N" + String(node) + " PM10", float(pm10)/10);
     lastSend = millis();
   }
-  
-
   tb.loop();
 }
