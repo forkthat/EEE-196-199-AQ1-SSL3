@@ -6,9 +6,9 @@ char thingsboardServer[] = "thingsboard.cloud";
 
 //WiFiClient wifiClient; -> #include <WiFiClient.h> ginamit
 
-WiFiClient wifiClient;
+WiFiClient espClient;
 
-ThingsBoard tb(wifiClient);
+ThingsBoard tb(espClient);
 
 int status = WL_IDLE_STATUS;
 unsigned long lastSend;
