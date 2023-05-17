@@ -23,7 +23,7 @@ painlessMesh mesh;
 // NODE NUMBER AND SENSOR TIMINGS
 // ####################################################################
 
-int nodeNumber = 2;                           // Change node number for each node and visually label each node
+int nodeNumber = 1;                           // Change node number for each node and visually label each node
 uint32_t gateway_mesh_ID = 1843304141;        // ID of the ESP32 gateway
 uint32_t msg_sent_success = 0;                // keeps count the successful packets sent during connection
 uint32_t msg_sent_fail = 0;                   // keeps count the packets not sent during connection
@@ -36,10 +36,10 @@ auto taskSendMsg_MQ135_seconds = TASK_SECOND * 30;
 auto taskSendMsg_MQ135_seconds_low = TASK_SECOND * 25;
 auto taskSendMsg_MQ135_seconds_high = TASK_SECOND * 35;
 
-int customWorkingPeriod_SDS011_minutes = 3;
-auto taskSendMsg_SDS011_seconds = TASK_SECOND * 180;
-auto taskSendMsg_SDS011_seconds_low = TASK_SECOND * 180;
-auto taskSendMsg_SDS011_seconds_high = TASK_SECOND * 190;
+int customWorkingPeriod_SDS011_minutes = 1;
+auto taskSendMsg_SDS011_seconds = TASK_SECOND * 60;
+auto taskSendMsg_SDS011_seconds_low = TASK_SECOND * 60;
+auto taskSendMsg_SDS011_seconds_high = TASK_SECOND * 70;
 
 // ####################################################################
 // DHT22
