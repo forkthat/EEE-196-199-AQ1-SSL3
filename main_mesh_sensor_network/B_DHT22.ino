@@ -9,7 +9,7 @@ String getReadings_DHT22(){
 
   doc["hum"] = dht_sensor.readHumidity();
   doc["tempC"] = dht_sensor.readTemperature();
-  doc["tempF"] = dht_sensor.readTemperature(true);
+  // doc["tempF"] = dht_sensor.readTemperature(true);
 
   return doc.as<String>();
 }
