@@ -5,16 +5,16 @@ void receivedCallback(uint32_t from, String &msg) {
   // DynamicJsonDocument doc(512);
   // deserializeJson(doc, msg);
 
-  // int node = doc["node"];
+  // int node_num = doc["node_num"];
   // double tempC = doc["tempC"];
   // double tempF = doc["tempF"];
   // double hum = doc["hum"];
   // double CO = doc["CO"];
   // double CO2 = doc["CO2"];
-  // float pm25 = doc["PM 2.5"];
-  // float pm10 = doc["PM 10"];
+  // float pm25 = doc["PM_2.5"];
+  // float pm10 = doc["PM_10"];
 
-  // if (node != 0){ Serial.printf("Node: %i\n", node); }
+  // if (node_num != 0){ Serial.printf("Node Num: %i\n", node_num); }
   // if ((tempC != 0) && (tempF != 0)){ Serial.printf("Temperature: %f C; %f F\n", tempC, tempF); }
   // if (hum != 0){ Serial.printf("Humidity: %f \%\n", hum); }
   // if (CO != 0){ Serial.printf("CO: %f ug/m^3\n", CO); }

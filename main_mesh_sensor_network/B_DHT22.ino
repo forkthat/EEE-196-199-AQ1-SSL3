@@ -3,7 +3,7 @@ DHT dht_sensor(DHT_SENSOR_PIN, DHT_SENSOR_TYPE);
 String getReadings_DHT22(){
   StaticJsonDocument<128> doc;
 
-  doc["node"] = nodeNumber;
+  doc["node_num"] = nodeNumber;
   doc["msg_success"] = msg_sent_success;
   doc["msg_fail"] = msg_sent_fail;
 

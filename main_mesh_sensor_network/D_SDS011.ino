@@ -9,12 +9,12 @@ void saveReadings_SDS011(float pm25_new, float pm10_new){
 String getReadings_SDS011(){
   StaticJsonDocument<128> doc;
 
-  doc["node"] = nodeNumber;
+  doc["node_num"] = nodeNumber;
   doc["msg_success"] = msg_sent_success;
   doc["msg_fail"] = msg_sent_fail;
 
-  doc["PM 2.5"] = pm25;
-  doc["PM 10"] = pm10;
+  doc["PM_2.5"] = pm25;
+  doc["PM_10"] = pm10;
 
   return doc.as<String>();
 }
