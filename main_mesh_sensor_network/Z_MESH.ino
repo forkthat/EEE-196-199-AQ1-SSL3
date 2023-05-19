@@ -44,12 +44,13 @@ void setup_MESH() {
   userScheduler.addTask(taskSendMessage_DHT22);
   userScheduler.addTask(taskSendMessage_MQ135);
   userScheduler.addTask(taskSendMessage_SDS011);
-
-  taskSendMessage_DHT22.enable();
-  taskSendMessage_MQ135.enable();
-  taskSendMessage_SDS011.enable();
 }
 
 void loop_MESH() {
+  if (mesh.isConnected(gateway_mesh_ID)){
+    taskSendMessage_DHT22.enableIfNot();
+    taskSendMessage_MQ135.enableIfNot();
+    taskSendMessage_SDS011.enableIfNot();
+  }
   mesh.update();
 }
