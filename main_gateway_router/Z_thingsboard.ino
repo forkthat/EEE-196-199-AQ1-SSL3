@@ -33,12 +33,12 @@ void loop_thingsboard() {
 
   //send data to thingsboard
   if (millis() - lastSend > 1000) {  // Update and send only after 1 seconds
-    tb.sendTelemetryFloat(final_temp, tempC);
-    tb.sendTelemetryFloat(final_hum, hum);
-    tb.sendTelemetryFloat(final_CO, CO);
-    tb.sendTelemetryFloat(final_CO2, CO2);
-    tb.sendTelemetryFloat(final_PM25, pm25);
-    tb.sendTelemetryFloat(final_PM10, pm10);
+    tb.sendTelemetryFloat(key_name_temp, tempC);
+    tb.sendTelemetryFloat(key_name_hum, hum);
+    tb.sendTelemetryFloat(key_name_CO, CO);
+    tb.sendTelemetryFloat(key_name_CO2, CO2);
+    tb.sendTelemetryFloat(key_name_PM25, pm25);
+    tb.sendTelemetryFloat(key_name_PM10, pm10);
     lastSend = millis();
   }
   tb.loop();
