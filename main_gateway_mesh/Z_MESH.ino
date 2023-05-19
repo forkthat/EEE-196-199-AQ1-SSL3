@@ -23,7 +23,7 @@ painlessMesh mesh;
 
 // Runs when a message is received on the mesh network
 void receivedCallback( uint32_t from, String &msg ) {
-  Serial.printf("startHere: Received from %u msg=%s\n", from, msg.c_str());
+  Serial.printf("Received from %u msg=%s\n", from, msg.c_str());
 
   StaticJsonDocument<300> doc;
   deserializeJson(doc, msg);
@@ -35,7 +35,7 @@ void receivedCallback( uint32_t from, String &msg ) {
 
 // Runs when a new node joins the mesh network
 void newConnectionCallback(uint32_t nodeId) {
-  Serial.printf("--> startHere: New Connection, nodeId = %u\n", nodeId);
+  Serial.printf("New Connection, nodeId = %u\n", nodeId);
 }
 
 // Runs when a new node joins or leaves the network
