@@ -1,14 +1,32 @@
 #include <ArduinoJson.h>
+#include <sstream>
 
-uint32_t node, msg_sent_success, msg_sent_fail;
-float tempC, hum, CO, CO2, pm25, pm10;
+#define MAX_STRING_LENGTH 10
 
-char final_temp[] = "N1 Temp";
-char final_hum[] = "N1 Humidity";
-char final_CO[] = "N1 CO";
-char final_CO2[] = "N1 CO2";
-char final_PM25[] = "N1 PM2.5";
-char final_PM10[] = "N1 PM10";
+uint32_t node_num, msg_sent_success, msg_sent_fail;
+double tempC, hum, CO, CO2, pm25, pm10;
+
+// char key_name_temp[] = "N# Temp";
+// char key_name_hum[]  = "N# Hum";
+// char key_name_CO[]   = "N# CO";
+// char key_name_CO2[]  = "N# CO2";
+// char key_name_PM25[] = "N# PM2.5";
+// char key_name_PM10[] = "N# PM10";
+
+String node_N = "N";
+String str_key_name_temp;
+String str_key_name_hum;
+String str_key_name_CO;
+String str_key_name_CO2;
+String str_key_name_PM25;
+String str_key_name_PM10;
+
+char key_name_temp[10];
+char key_name_hum[10];
+char key_name_CO[10];
+char key_name_CO2[10];
+char key_name_PM25[10];
+char key_name_PM10[10];
 
 void setup_receive_JSON()
 {
@@ -34,39 +52,51 @@ void loop_receive_JSON()
       #######################################################
       */
 
-      if (doc["node"].as<uint32_t>() > 0) { 
-        node = doc["node"].as<uint32_t>();
-        Serial.printf("==========\nNode: %u \n", doc["node"].as<uint32_t>());
+      if (doc["node_num"].as<uint32_t>() > 0) { 
+        node_num = doc["node_num"].as<uint32_t>();
+        Serial.printf("==========\nNode: %u \n", node_num);
 
         if (doc["tempC"].as<double>() > 0) { 
-          final_temp[1] = char(node);
+          str_key_name_temp = node_N + node_num + " Temp";
+          str_key_name_temp.toCharArray(key_name_temp, 10);
+
           tempC = doc["tempC"].as<double>();
           Serial.printf("Temperature: %lf C \n", doc["tempC"].as<double>()); 
         }
         if (doc["hum"].as<double>() > 0) { 
-          final_hum[1] = char(node);
+          str_key_name_hum = node_N + node_num + " Hum";
+          str_key_name_hum.toCharArray(key_name_hum, 10);
+
           hum = doc["hum"].as<double>();
           Serial.printf("Humidity: %lf %% \n", doc["hum"].as<double>()); 
         }
         if (doc["CO"].as<double>() > 0) { 
-          final_CO[1] = char(node);
+          str_key_name_CO = node_N + node_num + " CO";
+          str_key_name_CO.toCharArray(key_name_CO, 10);
+
           CO = doc["CO"].as<double>();
           Serial.printf("CO: %lf INSERT_UNITS_HERE \n", doc["CO"].as<double>()); 
         }
         if (doc["CO2"].as<double>() > 0) { 
-          final_CO2[1] = char(node);
+          str_key_name_CO2 = node_N + node_num + " CO2";
+          str_key_name_CO2.toCharArray(key_name_CO2, 10);
+
           CO2 = doc["CO2"].as<double>();
           Serial.printf("CO2: %lf INSERT_UNITS_HERE \n", doc["CO2"].as<double>());
         }
-        if (doc["PM 2.5"] > 0) { 
-          final_PM25[1] = char(node);
-          pm25 = doc["PM 2.5"];
-          Serial.printf("PM 2.5: %lf INSERT_UNITS_HERE \n", doc["PM 2.5"].as<double>()); 
+        if (doc["PM_2.5"] > 0) { 
+          str_key_name_PM25 = node_N + node_num + " PM2.5";
+          str_key_name_PM25.toCharArray(key_name_PM25, 10);
+
+          pm25 = doc["PM_2.5"];
+          Serial.printf("PM 2.5: %lf INSERT_UNITS_HERE \n", doc["PM_2.5"].as<double>()); 
         }
-        if (doc["PM 10"] > 0) { 
-          final_PM10[1] = char(node);
-          pm10 = doc["PM 10"];
-          Serial.printf("PM 10: %lf INSERT_UNITS_HERE \n", doc["PM 10"].as<double>()); 
+        if (doc["PM_10"] > 0) { 
+          str_key_name_PM10 = node_N + node_num + " PM10";
+          str_key_name_PM10.toCharArray(key_name_PM10, 10);
+
+          pm10 = doc["PM_10"];
+          Serial.printf("PM 10: %lf INSERT_UNITS_HERE \n", doc["PM_10"].as<double>()); 
         }
       }
 
