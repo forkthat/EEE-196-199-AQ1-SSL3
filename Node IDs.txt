@@ -1,4 +1,0 @@
-1843356469 node 1
-521154105 node 2
-
-1843304141 gateway mesh-facing
