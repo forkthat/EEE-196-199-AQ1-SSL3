@@ -30,8 +30,8 @@ Sds011Async< SoftwareSerial > sds011(serialSDS);
 #endif
 
 
-#define WIFI_SSID "PLDTHOMEFIBRwKJ3r"
-#define WIFI_PASSWORD "PLDTWIFIjwq5R"
+#define WIFI_SSID "Thingsboard"
+#define WIFI_PASSWORD "dennis@thingsboard"
 
 #define TOKEN "NODE1_TOKEN"
 

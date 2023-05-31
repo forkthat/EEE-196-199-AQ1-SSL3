@@ -23,7 +23,7 @@ painlessMesh mesh;
 // NODE NUMBER AND SENSOR TIMINGS
 // ####################################################################
 
-int nodeNumber = 1;                           // Change node number for each node and visually label each node
+int nodeNumber = 2;                           // Change node number for each node and visually label each node
 uint32_t gateway_mesh_ID = 1843304141;        // ID of the ESP32 gateway
 uint32_t msg_sent_success = 0;                // keeps count the successful packets sent during connection
 uint32_t msg_sent_fail = 0;                   // keeps count the packets not sent during connection
