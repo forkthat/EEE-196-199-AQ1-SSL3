@@ -1,16 +1,18 @@
-ArduinoHttpClient
-Arduino_JSON
 Adafruit Unified Sensor
+Arduino_JSON
+ArduinoHttpClient
 ArduinoJson
 AsyncTCP
 DHT sensor library
+esp_sds011
 ESPMQTTClient
 EspSoftwareSerial
 MQUnifiedsensor
 Nova Fitness Sds dust sensors library
 Painless Mesh
 PubSubClient
-TBPubSubClient
+SDS011_Sensor_Library
 TaskScheduler
+TBPubSubClient
 ThingsBoard
 WiFi
