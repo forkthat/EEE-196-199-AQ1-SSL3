@@ -6,10 +6,10 @@ String getReadings_MQ135(){
   MQ135.update();
 
   MQ135.setA(605.18); MQ135.setB(-3.937);
-  float CO = MQ135.readSensor() * 1000;
+  float CO = MQ135.readSensor();
   
   MQ135.setA(110.47); MQ135.setB(-2.862);
-  float CO2 = MQ135.readSensor() * 1000;
+  float CO2 = MQ135.readSensor();
   
   doc["node_num"] = nodeNumber;
   doc["msg_success"] = msg_sent_success;
@@ -19,6 +19,8 @@ String getReadings_MQ135(){
   doc["CO2"] = CO2;
 
   return doc.as<String>();
+
+  MQ135.serialDebug();
 }
 
 void setup_MQ135(){
@@ -27,6 +29,7 @@ void setup_MQ135(){
   MQ135.setRegressionMethod(1); 
  
   MQ135.init(); 
+
   Serial.print("Calibrating please wait.");
   float calcR0 = 0;
   for(int i = 1; i<=10; i ++){
@@ -48,7 +51,7 @@ void setup_MQ135(){
   }
 
   /*****************************  MQ CAlibration ********************************************/ 
-  MQ135.serialDebug(false);
+  MQ135.serialDebug(true);
 }
 
 void loop_MQ135(){

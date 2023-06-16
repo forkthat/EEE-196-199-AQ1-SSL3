@@ -63,10 +63,10 @@ String readings;
 #include <MQUnifiedsensor.h>
 
 #define placa "ESP-32"
-#define Voltage_Resolution 3.3
+#define Voltage_Resolution 5
 #define pin 34                                // Analog input 0 of your arduino
 #define type "MQ-135"       
-#define ADC_Bit_Resolution 12                 // For arduino UNO/MEGA/NANO
+#define ADC_Bit_Resolution 12                 
 #define RatioMQ135CleanAir 3.6                // (RS/R0) = 3.6 ppm  
 
 double CO2 = (0);
