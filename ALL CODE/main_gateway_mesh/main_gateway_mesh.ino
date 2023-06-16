@@ -2,7 +2,7 @@
 #define TXD2 17
 
 void setup(){
-  Serial.begin(115200);
+  Serial.begin(19200);
   while(!Serial) continue;
 
   Serial2.begin(9600, SERIAL_8N1, RXD2, TXD2);

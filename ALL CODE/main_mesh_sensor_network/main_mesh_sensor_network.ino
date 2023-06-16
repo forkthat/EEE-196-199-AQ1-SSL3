@@ -78,7 +78,7 @@ double CO2 = (0);
 // ####################################################################
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(19200);
   while(!Serial) continue;
 
   setup_MESH();
