@@ -7,7 +7,7 @@ DHT sensor library
 esp_sds011
 ESPMQTTClient
 EspSoftwareSerial
-MQUnifiedsensor
+MQ135 Phoenix1747
 Nova Fitness Sds dust sensors library
 Painless Mesh
 PubSubClient
