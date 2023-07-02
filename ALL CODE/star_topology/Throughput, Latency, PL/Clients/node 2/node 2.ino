@@ -3,7 +3,7 @@
 #include <WiFiUdp.h>
 #include <ThingsBoard.h>
 
-#define TOKEN "NODE1_TOKEN" // change this kasi ibang dashboard per node
+#define TOKEN "NODE2_TOKEN"
 
 // const char* ssid = "Experimental Network";
 // const char* password = "tanongmokayjaybie";
@@ -24,9 +24,10 @@ WiFiClient wifiClient;
 char thingsboardServer[] = "thingsboard.cloud";
 ThingsBoard tb(wifiClient);
 
+const int numberOfTestingHours = 24; 
 const int packetSize = 1024; // each packet has 1024 bytes
 const int numPackets = 12;  // Total number of packets to send 
-const int totalSize = packetSize * numPackets;  // Total data size in bytes (12 kb) 
+const int totalSize = packetSize * numPackets * numberOfTestingHours;  // Total data size in kilobytes (288 kb) 
 
 WiFiUDP udpClient;
 IPAddress serverAddress;
