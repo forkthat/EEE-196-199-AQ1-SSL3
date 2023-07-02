@@ -1,0 +1,1 @@
+*Includes all sensors, measures MTBF, no deep sleep
