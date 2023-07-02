@@ -3,7 +3,7 @@
     - 1024 bytes per packet kasi yun yung normal
     - Every 5 min pag-send ng data kasi sinisimulate natin kung nag-memeasure sensors every 5 min
 - For the duration of testing, it will determined by the number of packets (numPackets). For 1 hour of testing, numPackets = 12 kasi 12 * 5 minutes is 1 hour.
-- Sa example na to, total size of data to be transmitted = packetSize * numPackets = 1024 bytes * 12 packets ≈ 12 kilobytes
+- Sa example na to, total size of data to be transmitted = numberOfTestingHours * packetSize * numPackets = 24 hrs * 1024 bytes * 12 packets ≈ 288 kilobytes
 
 HOW TO USE:
 - modify value of numPackets or packetSize (if gusto baguhin size of data to be transmitted and length of testing)
