@@ -66,6 +66,7 @@ RTC_DATA_ATTR const int packetSize = 20; // each packet has 20 bytes kasi 4 byte
 RTC_DATA_ATTR const int numPackets = 12;  // Total number of packets to send, 12 per hour kasi 5 minutes each sensor measurement
 RTC_DATA_ATTR const int totalSize = packetSize * numPackets * numberOfTestingHours;  // Total data size in bytes 
 RTC_DATA_ATTR unsigned int packetCount = 0;
+RTC_DATA_ATTR unsigned int packetsReceived = 0;
 RTC_DATA_ATTR byte packet[packetSize]; // array to store the packets
 
 
@@ -75,7 +76,7 @@ RTC_DATA_ATTR byte packet[packetSize]; // array to store the packets
 
 float throughput = (totalSize * 8) / (elapsedTime / 1000.0) / 1000.0;  // Mbps
 float averageLatency = elapsedTime / numPackets;  // milliseconds
-float packetLoss = ((numPackets - packetCount) / static_cast<float>(numPackets)) * 100.0;
+float packetLoss = ((numPackets - packetsReceived) / static_cast<float>(numPackets)) * 100.0;
 float mtbf = numFailures > 0 ? (float)totalRuntime / numFailures : 0;
 
 
@@ -230,9 +231,11 @@ void loop_SDS011() {
   PmResult pm = sds.readPm();
   if (pm.isOk()) {
     saveReadings_SDS011(float(pm.pm25), float(pm.pm10));
+    
     // STORE IN PACKET
     packet[3] = pm.pm25;
     packet[4] = pm.pm10;
+    
      if (isnan(pm.pm25) || isnan(pm.pm10) || pm.pm25 == 0.00 || pm.pm10 == 0.00) { //don't send to thingsboard for PM2.5 and 10 if 0 or no value
        numFailures++;
        tb.sendTelemetryFloat("N1 Failures", numFailures);
@@ -416,6 +419,13 @@ void loop_thingsboard_sensors() {
   udpClient.beginPacket(serverAddress, serverPort);
   udpClient.write(packet, packetSize);
   udpClient.endPacket();
+
+  
+  // PACKET RECEPTION CHECK
+  if (udpClient.parsePacket()) {
+    // A packet was received
+    packetsReceived++;
+  }
 
 
   // SENSOR MEASUREMENT COUNTER
