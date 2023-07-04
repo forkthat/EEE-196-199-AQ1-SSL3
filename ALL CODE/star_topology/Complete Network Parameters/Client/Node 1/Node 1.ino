@@ -74,7 +74,7 @@ RTC_DATA_ATTR byte packet[packetSize]; // array to store the packets
 // NETWORK PARAMETERS CALCULATION
 // ####################################################################
 
-float throughput = (totalSize * 8) / (elapsedTime / 1000.0) / 1000.0;  // Mbps
+float throughput = (totalSize * 8) / (elapsedTime / 1000.0) / 1000.0;  // kbps
 float averageLatency = elapsedTime / numPackets;  // milliseconds
 float packetLoss = ((numPackets - packetsReceived) / static_cast<float>(numPackets)) * 100.0;
 float mtbf = numFailures > 0 ? (float)totalRuntime / numFailures : 0;
