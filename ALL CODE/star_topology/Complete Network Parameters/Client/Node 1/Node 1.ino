@@ -301,7 +301,7 @@ void loop() {
     Serial.println("Measurement Results:");
     Serial.print("Throughput: ");
     Serial.print(throughput);
-    Serial.println(" Mbps");
+    Serial.println(" kbps");
     Serial.print("Average Latency: ");
     Serial.print(averageLatency);
     Serial.println(" ms");
