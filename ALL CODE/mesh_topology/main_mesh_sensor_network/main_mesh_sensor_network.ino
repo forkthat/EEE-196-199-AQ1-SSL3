@@ -24,14 +24,13 @@ painlessMesh mesh;
 // ####################################################################
 
 int nodeNumber = 3;                           // Change node number for each node and visually label each node
-uint32_t gateway_mesh_ID = 1843304141;        // ID of the ESP32 gateway
+const uint32_t gateway_mesh_ID = 1843304141;  // ID of the ESP32 gateway
 uint32_t msg_sent_success = 0;                // keeps count the successful packets sent during connection
 uint32_t msg_sent_fail = 0;                   // keeps count the packets not sent during connection
 
-int DHT22_rate_seconds = 30;
-int MQ135_rate_seconds = 30;
-int customWorkingPeriod_SDS011_minutes = 1;
-int latency_interval_seconds = 15;
+int DHT22_rate_seconds = 60 * 5;
+int MQ135_rate_seconds = 60 * 5;
+int customWorkingPeriod_SDS011_minutes = 5;
 
 unsigned long taskSendMsg_DHT22_seconds = TASK_SECOND * DHT22_rate_seconds;
 unsigned long taskSendMsg_DHT22_seconds_low = TASK_SECOND * (DHT22_rate_seconds + 1);
@@ -47,7 +46,12 @@ unsigned long taskSendMsg_SDS011_seconds_low = TASK_SECOND * (customWorkingPerio
 unsigned long taskSendMsg_SDS011_seconds_high = TASK_SECOND * (customWorkingPeriod_SDS011_seconds + 5);
 
 // LATENCY
+int latency_interval_seconds = 15;
 unsigned long taskCheckLatency_interval_seconds = TASK_SECOND * latency_interval_seconds;
+
+// THROUGHPUT
+int throughput_interval_seconds = 15;
+unsigned long taskcalculateThroughput_interval_seconds = TASK_SECOND * throughput_interval_seconds;
 
 // ####################################################################
 // DHT22

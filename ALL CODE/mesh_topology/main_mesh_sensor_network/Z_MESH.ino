@@ -76,6 +76,7 @@ void setup_MESH() {
   userScheduler.addTask(taskSendMessage_MQ135);
   userScheduler.addTask(taskSendMessage_SDS011);
   userScheduler.addTask(taskCheckLatency);
+  userScheduler.addTask(taskcalculateThroughput);
 }
 
 void loop_MESH() {
