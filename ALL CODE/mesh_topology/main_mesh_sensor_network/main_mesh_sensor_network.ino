@@ -31,6 +31,7 @@ uint32_t msg_sent_fail = 0;                   // keeps count the packets not sen
 int DHT22_rate_seconds = 30;
 int MQ135_rate_seconds = 30;
 int customWorkingPeriod_SDS011_minutes = 1;
+int latency_interval_seconds = 15;
 
 unsigned long taskSendMsg_DHT22_seconds = TASK_SECOND * DHT22_rate_seconds;
 unsigned long taskSendMsg_DHT22_seconds_low = TASK_SECOND * (DHT22_rate_seconds + 1);
@@ -44,6 +45,9 @@ int customWorkingPeriod_SDS011_seconds = customWorkingPeriod_SDS011_minutes * 60
 unsigned long taskSendMsg_SDS011_seconds = TASK_SECOND * customWorkingPeriod_SDS011_seconds;
 unsigned long taskSendMsg_SDS011_seconds_low = TASK_SECOND * (customWorkingPeriod_SDS011_seconds + 1);
 unsigned long taskSendMsg_SDS011_seconds_high = TASK_SECOND * (customWorkingPeriod_SDS011_seconds + 5);
+
+// LATENCY
+unsigned long taskCheckLatency_interval_seconds = TASK_SECOND * latency_interval_seconds;
 
 // ####################################################################
 // DHT22

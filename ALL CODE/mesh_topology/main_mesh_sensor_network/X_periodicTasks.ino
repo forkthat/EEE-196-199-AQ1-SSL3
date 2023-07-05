@@ -1,6 +1,7 @@
 Task taskSendMessage_DHT22(taskSendMsg_DHT22_seconds, TASK_FOREVER, &sendMessage_DHT22);
 Task taskSendMessage_MQ135(taskSendMsg_MQ135_seconds, TASK_FOREVER, &sendMessage_MQ135);
-Task taskSendMessage_SDS011(taskSendMsg_SDS011_seconds, TASK_FOREVER, &SendMessage_SDS011);
+Task taskSendMessage_SDS011(taskSendMsg_SDS011_seconds, TASK_FOREVER, &sendMessage_SDS011);
+Task taskCheckLatency(taskCheckLatency_interval_seconds, TASK_FOREVER, &checkLatency);
 
 /*
   ####################################################################
@@ -34,8 +35,13 @@ void sendMessage_MQ135(){
   taskSendMessage_MQ135.setInterval(random(taskSendMsg_MQ135_seconds_low, taskSendMsg_MQ135_seconds_high));
 }
 
-void SendMessage_SDS011(){
+void sendMessage_SDS011(){
   String msg = getReadings_SDS011();
   sendToGateway(gateway_mesh_ID, msg);
   taskSendMessage_SDS011.setInterval(random(taskSendMsg_SDS011_seconds_low, taskSendMsg_SDS011_seconds_high));
+}
+
+void checkLatency(){
+  mesh.startDelayMeas(gateway_mesh_ID);
+  taskSendMessage_SDS011.setInterval(taskCheckLatency_interval_seconds);
 }

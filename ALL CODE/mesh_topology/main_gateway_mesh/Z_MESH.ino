@@ -14,12 +14,12 @@ https://randomnerdtutorials.com/esp-mesh-esp32-esp8266-painlessmesh/
 Scheduler userScheduler;                      // to control your personal task
 painlessMesh mesh;
 
-// void sendMessage() {
+void sendMessage() {
 //   String msg = "Hi from node1";
 //   msg += mesh.getNodeId();
 //   mesh.sendBroadcast( msg );
 //   taskSendMessage.setInterval( random( TASK_SECOND * 1, TASK_SECOND * 5 ));
-// }
+}
 
 // Runs when a message is received on the mesh network
 void receivedCallback( uint32_t from, String &msg ) {
@@ -57,14 +57,6 @@ void setup_MESH() {
   mesh.onNewConnection(&newConnectionCallback);
   mesh.onChangedConnections(&changedConnectionCallback);
   mesh.onNodeTimeAdjusted(&nodeTimeAdjustedCallback);
-
-  // userScheduler.addTask(taskSendMessage_DHT22);
-  // userScheduler.addTask(taskSendMessage_MQ135);
-  // userScheduler.addTask(taskSendMessage_SDS011);
-
-  // taskSendMessage_DHT22.enable();
-  // taskSendMessage_MQ135.enable();
-  // taskSendMessage_SDS011.enable();
 }
 
 void loop_MESH() {
