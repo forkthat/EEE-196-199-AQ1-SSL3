@@ -58,10 +58,6 @@ void nodeTimeAdjustedCallback(int32_t offset) {
   // Serial.printf("Adjusted time %u. Offset = %d\n", mesh.getNodeTime(),offset);
 }
 
-void onNodeDelayReceived(uint32_t nodeId, int32_t delay){
-  Serial.printf("Latency from %i: %i", nodeId, delay);
-}
-
 void setup_MESH() {
   // mesh.setDebugMsgTypes( ERROR | MESH_STATUS | CONNECTION | SYNC | COMMUNICATION | GENERAL | MSG_TYPES | REMOTE ); // all types on
   mesh.setDebugMsgTypes( ERROR | STARTUP );  // set before init() so that you can see startup messages
@@ -76,7 +72,7 @@ void setup_MESH() {
   userScheduler.addTask(taskSendMessage_MQ135);
   userScheduler.addTask(taskSendMessage_SDS011);
   userScheduler.addTask(taskCheckLatency);
-  userScheduler.addTask(taskcalculateThroughput);
+  userScheduler.addTask(taskCalculateThroughput);
 }
 
 void loop_MESH() {
@@ -85,11 +81,13 @@ void loop_MESH() {
     taskSendMessage_MQ135.enableIfNot();
     taskSendMessage_SDS011.enableIfNot();
     taskCheckLatency.enableIfNot();
+    taskCalculateThroughput.enableIfNot();
   } else {
     taskSendMessage_DHT22.disable();
     taskSendMessage_MQ135.disable();
     taskSendMessage_SDS011.disable();
     taskCheckLatency.disable();
+    taskCalculateThroughput.disable();
   }
   mesh.update();
 }

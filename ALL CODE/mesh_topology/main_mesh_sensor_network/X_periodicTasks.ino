@@ -1,8 +1,12 @@
 Task taskSendMessage_DHT22(taskSendMsg_DHT22_seconds, TASK_FOREVER, &sendMessage_DHT22);
 Task taskSendMessage_MQ135(taskSendMsg_MQ135_seconds, TASK_FOREVER, &sendMessage_MQ135);
 Task taskSendMessage_SDS011(taskSendMsg_SDS011_seconds, TASK_FOREVER, &sendMessage_SDS011);
-Task taskCheckLatency(taskCheckLatency_interval_seconds, TASK_FOREVER, &checkLatency);
-Task taskcalculateThroughput(taskcalculateThroughput_interval_seconds, TASK_FOREVER, &calculateThroughput);
+
+Task taskCheckLatency(taskCheckLatency_rate_seconds, TASK_FOREVER, &checkLatency);
+Task taskCalculateThroughput(taskCalculateThroughput_rate_seconds, TASK_FOREVER, &calculateThroughput);
+
+Task taskSendMessage_Latency(taskSendMsg_Latency_seconds, TASK_FOREVER, &sendMessage_Latency);
+Task taskSendMessage_Throughput(taskSendMsg_Throughput_seconds, TASK_FOREVER, &sendMessage_Latency);
 
 /*
   ####################################################################
@@ -13,10 +17,6 @@ Task taskcalculateThroughput(taskcalculateThroughput_interval_seconds, TASK_FORE
     on message receive, send data to gateway
   ####################################################################
 */
-
-unsigned int msg_size = 0;
-unsigned long startTime = 0;
-double throughput;
 
 void sendToGateway(uint32_t gateway_mesh_ID, String &msg){
   // size in bytes
@@ -51,15 +51,29 @@ void sendMessage_SDS011(){
 
 void checkLatency(){
   mesh.startDelayMeas(gateway_mesh_ID);
-  taskSendMessage_SDS011.setInterval(taskCheckLatency_interval_seconds);
+  taskCheckLatency.setInterval(taskCheckLatency_rate_seconds);
 }
 
 void calculateThroughput(){
   startTime = millis();
 
-  if((millis() - startTime) >= 10){
+  if((millis() - startTime) >= throughput_period_seconds){
     //            {    bits    }   {kilo}    {per second}
-    throughput = ((msg_size * 8) / (1000)) / 10;
+    throughput = ((msg_size * 8) / (1000)) / throughput_period_seconds;
     msg_size = 0;
   }
+
+  taskCalculateThroughput.setInterval(taskCalculateThroughput_rate_seconds);
+}
+
+void sendMessage_Latency(){
+  String msg = getReadings_Latency();
+  sendToGateway(gateway_mesh_ID, msg);
+  taskSendMessage_SDS011.setInterval(random(taskSendMsg_Latency_seconds_low, taskSendMsg_Latency_seconds_high));
+}
+
+void sendMessage_Throughput(){
+  String msg = getReadings_Throughput();
+  sendToGateway(gateway_mesh_ID, msg);
+  taskSendMessage_SDS011.setInterval(random(taskSendMsg_Throughput_seconds_low, taskSendMsg_Throughput_seconds_high));
 }

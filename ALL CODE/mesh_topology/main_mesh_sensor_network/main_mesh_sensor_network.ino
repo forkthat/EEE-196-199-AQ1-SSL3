@@ -46,12 +46,22 @@ unsigned long taskSendMsg_SDS011_seconds_low = TASK_SECOND * (customWorkingPerio
 unsigned long taskSendMsg_SDS011_seconds_high = TASK_SECOND * (customWorkingPeriod_SDS011_seconds + 5);
 
 // LATENCY
-int latency_interval_seconds = 15;
-unsigned long taskCheckLatency_interval_seconds = TASK_SECOND * latency_interval_seconds;
+int checkLatency_rate_seconds = 30;
+unsigned long taskCheckLatency_rate_seconds = TASK_SECOND * checkLatency_rate_seconds;
+
+int sendMsgLatency_rate_seconds = 30;
+unsigned long taskSendMsg_Latency_seconds = TASK_SECOND * sendMsgLatency_rate_seconds;
+unsigned long taskSendMsg_Latency_seconds_low = TASK_SECOND * (sendMsgLatency_rate_seconds + 1);
+unsigned long taskSendMsg_Latency_seconds_high = TASK_SECOND * (sendMsgLatency_rate_seconds + 5);
 
 // THROUGHPUT
-int throughput_interval_seconds = 15;
-unsigned long taskcalculateThroughput_interval_seconds = TASK_SECOND * throughput_interval_seconds;
+int throughput_rate_seconds = 60 * 60;
+unsigned long taskCalculateThroughput_rate_seconds = TASK_SECOND * throughput_rate_seconds;
+
+int sendMsgThroughput_rate_seconds = 60 * 60;
+unsigned long taskSendMsg_Throughput_seconds = TASK_SECOND * sendMsgThroughput_rate_seconds;
+unsigned long taskSendMsg_Throughput_seconds_low = TASK_SECOND * (sendMsgThroughput_rate_seconds + 1);
+unsigned long taskSendMsg_Throughput_seconds_high = TASK_SECOND * (sendMsgThroughput_rate_seconds + 5);
 
 // ####################################################################
 // DHT22
