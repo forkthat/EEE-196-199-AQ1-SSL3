@@ -97,13 +97,14 @@ void loop_receive_JSON()
       #######################################################
       */
 
-      if (doc["msg_success"].as<uint32_t>() > 0) { 
-        msg_sent_success = doc["msg_success"].as<uint32_t>();
-        Serial.printf("Success: %u \n", doc["msg_success"].as<uint32_t>()); 
+      msg_sent_success = doc["msg_success"].as<uint32_t>();
+      if (msg_sent_success > 0) { 
+        Serial.printf("Success: %u \n", msg_sent_success); 
       }
-      if (doc["msg_fail"].as<uint32_t>() > 0) { 
-        msg_sent_fail = doc["msg_fail"].as<uint32_t>();
-        Serial.printf("Fail: %u \n", doc["msg_fail"].as<uint32_t>()); 
+
+      msg_sent_fail = doc["msg_fail"].as<uint32_t>();
+      if (msg_sent_fail > 0) { 
+        Serial.printf("Fail: %u \n", msg_sent_fail); 
       }
 
       double total_success_fail = msg_sent_success + msg_sent_fail;
