@@ -20,13 +20,19 @@
 // const char* ssid = "PLDTHOMEFIBRwKJ3r";
 // const char* password = "PLDTWIFIjwq5R";
 
-const char* ssid = "GeeHomeMesh";
-const char* password = "XpwATM1Ldeco";
+//const char* ssid = "GeeHomeMesh";
+//const char* password = "XpwATM1Ldeco";
+
+//const char* ssid = "MSI";
+//const char* password = "thesisit";
+
+const char* ssid = "Experimental Network";
+const char* password = "tanongmokayjaybie";
 
 unsigned long previousMillis = 0;
 unsigned long interval = 30000;
 
-#define TOKEN "NODE1_TOKEN"
+#define TOKEN "NODE5_TOKEN"
 
 char thingsboardServer[] = "thingsboard.cloud";
 
@@ -124,8 +130,20 @@ void loop_DHT22_MQ135(){
   if (isnan(tempC) || isnan(humi) || tempC == 0.00 || humi == 0.00) { //don't send to thingsboard for temp and humi if 0 or no value
   }
   else {
-    tb.sendTelemetryFloat("N5 Temperature", tempC);
-    tb.sendTelemetryFloat("N5 Humidity", humi);
+    float hcal1 = 40.8096155;
+    float hcal2 = 16.10000009;
+    float uh1 = 25.4;
+    float uh2 = 41.9;
+    float tcal1 = 27.96730757;
+    float tcal2 = 3.505769253;
+    float ut1 = 1.6;
+    float ut2 = 27.4;
+    float tempC = dht_sensor.readTemperature();
+    float humi  = dht_sensor.readHumidity();
+    float finalhumi = ( ( (humi - hcal1) * uh1) / hcal2) + uh2;
+    float finaltemp = ( ( (tempC - tcal1) * ut1) / tcal2) + ut2;
+    tb.sendTelemetryFloat("N5 Temperature", finaltemp);
+    tb.sendTelemetryFloat("N5 Humidity", finalhumi);
   }
 
   ////MQ135
@@ -154,7 +172,12 @@ void loop_DHT22_MQ135(){
   if (isnan(correctedPPM_ugm3) || correctedPPM_ugm3 == 0.00) { //don't send to thingsboard for CO if 0 or no value
   }
   else {
-    tb.sendTelemetryFloat("N5 CO", correctedPPM_ugm3);
+    float ccal1 = 0;
+    float ccal2 = 15367.8607;
+    float uc1 = 700;
+    float uc2 = 0;
+    float finalco = ( ( (correctedPPM_ugm3 - ccal1) * uc1) / ccal2) + uc2;
+    tb.sendTelemetryFloat("N5 CO", finalco);
   }
   
   
@@ -230,7 +253,12 @@ void loop_SDS011() {
      
      }
      else {
-       tb.sendTelemetryFloat("N5 PM2.5", pm.pm25);
+      float pcal1 = 1.52;
+      float pcal2 = 7.780000209;
+      float up1 = 149;
+      float up2 = 51;
+      float finalpm = ( ( (pm.pm25 - pcal1) * up1) / pcal2) + up2;
+       tb.sendTelemetryFloat("N5 PM2.5", finalpm);
        tb.sendTelemetryFloat("N5 PM10", pm.pm10);
      }
     // if you want to just print the measured values, you can use toString() method as well
