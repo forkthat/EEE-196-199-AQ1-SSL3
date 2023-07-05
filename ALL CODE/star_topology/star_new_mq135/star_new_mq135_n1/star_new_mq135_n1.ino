@@ -20,8 +20,11 @@
 // const char* ssid = "PLDTHOMEFIBRwKJ3r";
 // const char* password = "PLDTWIFIjwq5R";
 
-const char* ssid = "GeeHomeMesh";
-const char* password = "XpwATM1Ldeco";
+//const char* ssid = "GeeHomeMesh";
+//const char* password = "XpwATM1Ldeco";
+
+const char* ssid = "Experimental Network";
+const char* password = "tanongmokayjaybie";
 
 unsigned long previousMillis = 0;
 unsigned long interval = 30000;
