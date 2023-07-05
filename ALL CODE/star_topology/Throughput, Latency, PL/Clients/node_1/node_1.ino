@@ -26,8 +26,8 @@ ThingsBoard tb(wifiClient);
 
 const int numberOfTestingHours = 24; 
 const int packetSize = 1024; // each packet has 1024 bytes
-const int numPackets = 12;  // Total number of packets to send 
-const int totalSize = packetSize * numPackets * numberOfTestingHours;  // Total data size in kilobytes (288 kb) 
+const int numPackets = 12;  // Total number of packets to send per hour
+const int totalSize = packetSize * numPackets * numberOfTestingHours;  // Total data size in kilobytes (288 kb) for the whole 24 hours
 
 WiFiUDP udpClient;
 IPAddress serverAddress;
@@ -61,15 +61,15 @@ void setup() {
 }
 
 void loop() {
-  if (packetCount == 0) {
-    // Start measuring
-    startTime = millis();
-  }
-
   // Prepare packet with dummy data
   byte packet[packetSize];
   for (int i = 0; i < packetSize; i++) {
     packet[i] = random(255);
+  }
+
+  if (packetCount == 0) {
+    // Start measuring
+    startTime = millis();
   }
 
   // Send packet to server
