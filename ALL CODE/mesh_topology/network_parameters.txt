@@ -8,8 +8,8 @@ OK
 
 MESH
 > Latency (milliseconds) - sensor
-> Packet Loss (percentage) - gw_mesh
 > Throughput (kilobits per second) - sensor
+> Packet Loss (percentage) - gw_mesh
 
 STAR
 > 

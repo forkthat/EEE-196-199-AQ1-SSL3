@@ -67,12 +67,15 @@ void setup_MESH() {
   mesh.onNewConnection(&newConnectionCallback);
   mesh.onChangedConnections(&changedConnectionCallback);
   mesh.onNodeTimeAdjusted(&nodeTimeAdjustedCallback);
+  mesh.onNodeDelayReceived(&receivedDelayCallback);
 
+  // sensors
   userScheduler.addTask(taskSendMessage_DHT22);
   userScheduler.addTask(taskSendMessage_MQ135);
   userScheduler.addTask(taskSendMessage_SDS011);
-  userScheduler.addTask(taskCheckLatency);
-  userScheduler.addTask(taskCalculateThroughput);
+  // network parameters
+  userScheduler.addTask(task_Latency);
+  userScheduler.addTask(task_Throughput);
 }
 
 void loop_MESH() {
@@ -80,14 +83,16 @@ void loop_MESH() {
     taskSendMessage_DHT22.enableIfNot();
     taskSendMessage_MQ135.enableIfNot();
     taskSendMessage_SDS011.enableIfNot();
-    taskCheckLatency.enableIfNot();
-    taskCalculateThroughput.enableIfNot();
+
+    task_Latency.enableIfNot();
+    task_Throughput.enableIfNot();
   } else {
     taskSendMessage_DHT22.disable();
     taskSendMessage_MQ135.disable();
     taskSendMessage_SDS011.disable();
-    taskCheckLatency.disable();
-    taskCalculateThroughput.disable();
+
+    task_Latency.disable();
+    task_Throughput.disable();
   }
   mesh.update();
 }

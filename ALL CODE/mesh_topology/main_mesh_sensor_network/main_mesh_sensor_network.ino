@@ -45,24 +45,6 @@ unsigned long taskSendMsg_SDS011_seconds = TASK_SECOND * customWorkingPeriod_SDS
 unsigned long taskSendMsg_SDS011_seconds_low = TASK_SECOND * (customWorkingPeriod_SDS011_seconds + 1);
 unsigned long taskSendMsg_SDS011_seconds_high = TASK_SECOND * (customWorkingPeriod_SDS011_seconds + 5);
 
-// LATENCY
-int checkLatency_rate_seconds = 30;
-unsigned long taskCheckLatency_rate_seconds = TASK_SECOND * checkLatency_rate_seconds;
-
-int sendMsgLatency_rate_seconds = 30;
-unsigned long taskSendMsg_Latency_seconds = TASK_SECOND * sendMsgLatency_rate_seconds;
-unsigned long taskSendMsg_Latency_seconds_low = TASK_SECOND * (sendMsgLatency_rate_seconds + 1);
-unsigned long taskSendMsg_Latency_seconds_high = TASK_SECOND * (sendMsgLatency_rate_seconds + 5);
-
-// THROUGHPUT
-int throughput_rate_seconds = 60 * 60;
-unsigned long taskCalculateThroughput_rate_seconds = TASK_SECOND * throughput_rate_seconds;
-
-int sendMsgThroughput_rate_seconds = 60 * 60;
-unsigned long taskSendMsg_Throughput_seconds = TASK_SECOND * sendMsgThroughput_rate_seconds;
-unsigned long taskSendMsg_Throughput_seconds_low = TASK_SECOND * (sendMsgThroughput_rate_seconds + 1);
-unsigned long taskSendMsg_Throughput_seconds_high = TASK_SECOND * (sendMsgThroughput_rate_seconds + 5);
-
 // ####################################################################
 // DHT22
 // ####################################################################
@@ -73,6 +55,7 @@ unsigned long taskSendMsg_Throughput_seconds_high = TASK_SECOND * (sendMsgThroug
 #define DHT_SENSOR_TYPE DHT22
 
 String readings;
+DHT dht_sensor(DHT_SENSOR_PIN, DHT_SENSOR_TYPE);
 
 // ####################################################################
 // MQ135
@@ -88,12 +71,40 @@ String readings;
 #define RatioMQ135CleanAir 3.6                // (RS/R0) = 3.6 ppm  
 
 double CO2 = (0);
+MQUnifiedsensor MQ135(placa, Voltage_Resolution, ADC_Bit_Resolution, pin, type);
 
 // ####################################################################
 // SDS011
 // ####################################################################
 
 #include "SdsDustSensor.h"
+float pm25, pm10;
+SdsDustSensor sds(Serial2);
+
+// ####################################################################
+// LATENCY
+// ####################################################################
+
+int latency_rate_seconds = 30;
+unsigned long taskLatency_rate_seconds = TASK_SECOND * latency_rate_seconds;
+
+int latency_data[10];
+int latency_index = 0;
+int sum = 0;
+int ave_latency = 0;
+String msg_Latency;
+bool flag_delay_received = false;
+
+// ####################################################################
+// THROUGHPUT
+// ####################################################################
+
+// every hour
+int throughput_rate_seconds = 60 * 60;
+unsigned long taskThroughput_rate_seconds = TASK_SECOND * throughput_rate_seconds;
+
+unsigned int msg_size = 0;
+double throughput = 0;
 
 // ####################################################################
 // SETUP AND LOOP
