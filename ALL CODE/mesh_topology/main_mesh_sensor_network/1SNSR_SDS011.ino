@@ -1,6 +1,3 @@
-float pm25, pm10;
-SdsDustSensor sds(Serial2);
-
 void saveReadings_SDS011(float pm25_new, float pm10_new){
   pm25 = pm25_new;
   pm10 = pm10_new;

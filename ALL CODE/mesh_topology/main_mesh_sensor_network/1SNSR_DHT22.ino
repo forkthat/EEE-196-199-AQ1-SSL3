@@ -1,5 +1,3 @@
-DHT dht_sensor(DHT_SENSOR_PIN, DHT_SENSOR_TYPE);
-
 String getReadings_DHT22(){
   StaticJsonDocument<128> doc;
 
