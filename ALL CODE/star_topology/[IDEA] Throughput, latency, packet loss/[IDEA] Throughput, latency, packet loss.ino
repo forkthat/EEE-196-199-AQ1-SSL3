@@ -29,7 +29,7 @@ const int nodeID = 1;
 const int numberOfTestingHours = 72; 
 const int packetSize = 24; // each packet has 1024 bytes
 const int numPackets = 12;  // Total number of packets to send per hour
-const int totalSize = packetSize * numPackets * numberOfTestingHours;  // Total data size = 20,736 kilobytes whole 24 hours
+const int totalSize = packetSize * numPackets * numberOfTestingHours;  // Total data size = 20,736 kilobytes whole 72 hours
 unsigned int packetsReceived = 0;
 
 WiFiUDP udpClient;
