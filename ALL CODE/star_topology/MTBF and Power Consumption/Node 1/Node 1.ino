@@ -103,7 +103,7 @@ void loop_DHT22_MQ135(){
   float humi  = dht_sensor.readHumidity();
   Serial.println("Temperature: " + String(tempC) + " C");
   Serial.println("Humidity: " + String(humi) + "%");
-  if (isnan(tempC) || isnan(humi) || tempC == 0.00 || humi == 0.00) { //don't send to thingsboard for temp and humi if 0 or no value
+  if (isnan(tempC) || isnan(humi)) { //don't send to thingsboard for temp and humi no value
     numFailures++;
     tb.sendTelemetryFloat("N1 Failures", numFailures);
   }
@@ -130,7 +130,7 @@ void loop_DHT22_MQ135(){
   Serial.print("CO: ");
   Serial.print(correctedPPM_ugm3);
   Serial.print(" ug/m3 \n");
-  if (isnan(correctedPPM_ugm3) || correctedPPM_ugm3 == 0.00) { // don't send to thingsboard for CO if 0 or no value
+  if (isnan(correctedPPM_ugm3)) { // don't send to thingsboard for CO if no value
     numFailures++;
     tb.sendTelemetryFloat("N1 Failures", numFailures);
   }
@@ -199,7 +199,7 @@ void loop_SDS011() {
   PmResult pm = sds.readPm();
   if (pm.isOk()) {
     saveReadings_SDS011(float(pm.pm25), float(pm.pm10));
-     if (isnan(pm.pm25) || isnan(pm.pm10) || pm.pm25 == 0.00 || pm.pm10 == 0.00) { //don't send to thingsboard for PM2.5 and 10 if 0 or no value
+     if (isnan(pm.pm25) || isnan(pm.pm10)) { //don't send to thingsboard for PM2.5 and 10 if no value
        numFailures++;
        tb.sendTelemetryFloat("N1 Failures", numFailures);
      }
