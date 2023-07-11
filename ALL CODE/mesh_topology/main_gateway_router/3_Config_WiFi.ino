@@ -1,14 +1,3 @@
-#include <WiFi.h>
-
-// Replace with your network credentials
-// const char* ssid = "Experimental Network";
-// const char* password = "tanongmokayjaybie";
-const char* ssid = "Thingsboard";
-const char* password = "dennis@thingsboard";
-
-unsigned long previousMillis = 0;
-unsigned long interval = 30000;
-
 void init_WIFI() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);

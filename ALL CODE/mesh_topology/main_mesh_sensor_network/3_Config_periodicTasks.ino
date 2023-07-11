@@ -1,10 +1,3 @@
-Task taskSendMessage_DHT22(taskSendMsg_DHT22_seconds, TASK_FOREVER, &sendMessage_DHT22);
-Task taskSendMessage_MQ135(taskSendMsg_MQ135_seconds, TASK_FOREVER, &sendMessage_MQ135);
-Task taskSendMessage_SDS011(taskSendMsg_SDS011_seconds, TASK_FOREVER, &sendMessage_SDS011);
-
-Task task_Latency(taskLatency_rate_seconds, TASK_FOREVER, &sendMessage_Latency);
-Task task_Throughput(taskThroughput_rate_seconds, TASK_FOREVER, &end_Throughput);
-
 /*
   ####################################################################
   DONE: 

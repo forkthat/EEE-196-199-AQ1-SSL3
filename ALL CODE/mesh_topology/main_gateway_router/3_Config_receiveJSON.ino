@@ -1,26 +1,3 @@
-#include <ArduinoJson.h>
-#include <sstream>
-
-#define MAX_STRING_LENGTH 10
-
-uint32_t node_num, msg_sent_success, msg_sent_fail;
-double tempC, hum, CO, CO2, pm25, pm10;
-
-String node_N = "N";
-String str_key_name_temp;
-String str_key_name_hum;
-String str_key_name_CO;
-String str_key_name_CO2;
-String str_key_name_PM25;
-String str_key_name_PM10;
-
-char key_name_temp[MAX_STRING_LENGTH];
-char key_name_hum[MAX_STRING_LENGTH];
-char key_name_CO[MAX_STRING_LENGTH];
-char key_name_CO2[MAX_STRING_LENGTH];
-char key_name_PM25[MAX_STRING_LENGTH];
-char key_name_PM10[MAX_STRING_LENGTH];
-
 void setup_receive_JSON()
 {
   

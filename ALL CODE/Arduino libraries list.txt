@@ -8,6 +8,7 @@ esp_sds011
 ESPMQTTClient
 EspSoftwareSerial
 MQ135 GeorgK Phoenix1747
+miguel5612/MQSensorsLib
 Nova Fitness Sds dust sensors library
 Painless Mesh
 PubSubClient

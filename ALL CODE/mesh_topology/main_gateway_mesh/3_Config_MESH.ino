@@ -4,16 +4,6 @@ https://randomnerdtutorials.com/esp-mesh-esp32-esp8266-painlessmesh/
 ####################################################################
 */
 
-#include "painlessMesh.h"
-#include <ArduinoJson.h>
-
-#define MESH_PREFIX "AQ1_SSL3_"               // MESH_PREFIX: name of the node network
-#define MESH_PASSWORD "somethingSneaky"
-#define MESH_PORT 5555
-
-Scheduler userScheduler;                      // to control your personal task
-painlessMesh mesh;
-
 void sendMessage() {
 //   String msg = "Hi from node1";
 //   msg += mesh.getNodeId();

@@ -1,14 +1,3 @@
-#include <ThingsBoard.h>
-#include <WiFiClient.h>
-
-#define TOKEN "Gateway_Router_TOKEN"
-char thingsboardServer[] = "thingsboard.cloud";
-
-WiFiClient wifiClient;
-ThingsBoard tb(wifiClient);
-
-unsigned long lastSend;
-
 void setup_thingsboard() {
   lastSend = 0;
 }
