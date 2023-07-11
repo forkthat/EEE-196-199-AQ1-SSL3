@@ -1,5 +1,3 @@
-#include "3_NetConfig_MESH.ino"
-
 #define RXD2 16
 #define TXD2 17
 

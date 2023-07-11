@@ -1,13 +1,13 @@
-    Adafruit Unified Sensor
-    Arduino_JSON
-    ArduinoHttpClient
-    ArduinoJson
-    AsyncTCP
+Adafruit Unified Sensor
+Arduino_JSON
+ArduinoHttpClient
+ArduinoJson
+AsyncTCP
 DHT sensor library
 esp_sds011
 ESPMQTTClient
-    EspSoftwareSerial
-MQ135 Phoenix1747
+EspSoftwareSerial
+MQ135 GeorgK Phoenix1747
 Nova Fitness Sds dust sensors library
 Painless Mesh
 PubSubClient
