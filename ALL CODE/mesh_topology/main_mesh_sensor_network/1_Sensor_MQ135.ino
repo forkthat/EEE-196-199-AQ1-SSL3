@@ -1,24 +1,18 @@
 String getReadings_MQ135(){
-  StaticJsonDocument<128> doc;
-  
   MQ135.update();
-
   MQ135.setA(605.18); MQ135.setB(-3.937);
   float CO = MQ135.readSensor();
-  
   // MQ135.setA(110.47); MQ135.setB(-2.862);
   // float CO2 = MQ135.readSensor();
-  
+  MQ135.serialDebug();
+
+  StaticJsonDocument<128> doc;  
   doc["node"] = nodeNumber;
   doc["msg_s"] = msg_sent_success;
   doc["msg_f"] = msg_sent_fail;
-
   doc["CO"] = CO;
   // doc["CO2"] = CO2;
-
   return doc.as<String>();
-
-  MQ135.serialDebug();
 }
 
 void setup_MQ135(){
