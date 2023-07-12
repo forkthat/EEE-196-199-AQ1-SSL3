@@ -6,15 +6,15 @@ String getReadings_MQ135(){
   MQ135.setA(605.18); MQ135.setB(-3.937);
   float CO = MQ135.readSensor();
   
-  MQ135.setA(110.47); MQ135.setB(-2.862);
-  float CO2 = MQ135.readSensor();
+  // MQ135.setA(110.47); MQ135.setB(-2.862);
+  // float CO2 = MQ135.readSensor();
   
   doc["node_num"] = nodeNumber;
   doc["msg_success"] = msg_sent_success;
   doc["msg_fail"] = msg_sent_fail;
 
   doc["CO"] = CO;
-  doc["CO2"] = CO2;
+  // doc["CO2"] = CO2;
 
   return doc.as<String>();
 
