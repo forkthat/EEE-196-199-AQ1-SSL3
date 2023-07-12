@@ -83,14 +83,12 @@ void loop_MESH() {
     taskSendMessage_DHT22.enableIfNot();
     taskSendMessage_MQ135.enableIfNot();
     taskSendMessage_SDS011.enableIfNot();
-
     task_Latency.enableIfNot();
     task_Throughput.enableIfNot();
   } else {
     taskSendMessage_DHT22.disable();
     taskSendMessage_MQ135.disable();
     taskSendMessage_SDS011.disable();
-
     task_Latency.disable();
     task_Throughput.disable();
   }

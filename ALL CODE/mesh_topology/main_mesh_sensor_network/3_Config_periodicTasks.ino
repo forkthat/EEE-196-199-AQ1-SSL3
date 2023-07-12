@@ -25,19 +25,16 @@ void sendToGateway(uint32_t gateway_mesh_ID, String &msg){
 void sendMessage_DHT22(){
   String msg = getReadings_DHT22();
   sendToGateway(gateway_mesh_ID, msg);
-  taskSendMessage_DHT22.setInterval(random(taskSendMsg_DHT22_seconds_low, taskSendMsg_DHT22_seconds_high));
 }
 
 void sendMessage_MQ135(){
   String msg = getReadings_MQ135();
   sendToGateway(gateway_mesh_ID, msg);
-  taskSendMessage_MQ135.setInterval(random(taskSendMsg_MQ135_seconds_low, taskSendMsg_MQ135_seconds_high));
 }
 
 void sendMessage_SDS011(){
   String msg = getReadings_SDS011();
   sendToGateway(gateway_mesh_ID, msg);
-  taskSendMessage_SDS011.setInterval(random(taskSendMsg_SDS011_seconds_low, taskSendMsg_SDS011_seconds_high));
 }
 
 /*
@@ -54,7 +51,6 @@ void sendMessage_Latency(){
     sendToGateway(gateway_mesh_ID, msg_Latency);
     flag_delay_received = false;
   }
-  task_Latency.setInterval(taskLatency_rate_seconds);
 }
 
 void start_Throughput(){

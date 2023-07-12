@@ -1,5 +1,5 @@
 String getReadings_Throughput(){
-  throughput = ((msg_size * 8) / (1000)) / taskThroughput_rate_seconds;
+  double throughput = ((msg_size * 8) / (1000)) / taskThroughput_rate_seconds;
   msg_size = 0;
 
   StaticJsonDocument<128> doc;

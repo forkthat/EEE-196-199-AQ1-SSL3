@@ -18,6 +18,5 @@ void receivedDelayCallback(uint32_t nodeId, int32_t delay){
   doc["latency"] = ave_latency;
 
   msg_Latency = doc.as<String>();
-
   flag_delay_received = true;
 }
