@@ -12,7 +12,7 @@ void init_WIFI() {
 void reconnect_WIFI() {
   unsigned long currentMillis = millis();
   // if WiFi is down, try reconnecting
-  if ((WiFi.status() != WL_CONNECTED) && (currentMillis - previousMillis >=interval)) {
+  if ((WiFi.status() != WL_CONNECTED) && (currentMillis - previousMillis >= interval_WiFi)) {
     Serial.print(millis());
     Serial.println("Reconnecting to WiFi...");
     WiFi.disconnect();

@@ -11,7 +11,7 @@
 #define MAX_STRING_LENGTH 10
 
 uint32_t node_num, msg_sent_success, msg_sent_fail;
-double tempC, hum, CO, CO2, pm25, pm10, total, packet_loss, latency, throughput;
+double tempC, hum, CO, CO2, pm25, pm10, total, packet_loss, latency, throughput, MTBF;
 
 String node_N = "N";
 String str_key_name_temp;
@@ -23,6 +23,7 @@ String str_key_name_PM10;
 String str_key_name_packet_loss;
 String str_key_name_latency;
 String str_key_name_throughput;
+String str_key_name_MTBF;
 
 char key_name_temp[MAX_STRING_LENGTH];
 char key_name_hum[MAX_STRING_LENGTH];
@@ -33,6 +34,7 @@ char key_name_PM10[MAX_STRING_LENGTH];
 char key_name_packet_loss[MAX_STRING_LENGTH];
 char key_name_latency[MAX_STRING_LENGTH];
 char key_name_throughput[MAX_STRING_LENGTH];
+char key_name_MTBF[MAX_STRING_LENGTH];
 
 // ####################################################################
 // THINGSBOARD
@@ -42,11 +44,12 @@ char key_name_throughput[MAX_STRING_LENGTH];
 #include <WiFiClient.h>
 #define TOKEN "Gateway_Router_TOKEN"
 
-char thingsboardServer[] = "thingsboard.cloud";
-unsigned long lastSend;
-
 WiFiClient wifiClient;
 ThingsBoard tb(wifiClient);
+
+char thingsboardServer[] = "thingsboard.cloud";
+unsigned long lastSend;
+unsigned long interval_TB = 1000 * 5;
 
 // ####################################################################
 // WIFI
@@ -61,7 +64,7 @@ const char* password = "tanongmokayjaybie";
 // const char* password = "dennis@thingsboard";
 
 unsigned long previousMillis = 0;
-unsigned long interval = 30000;
+unsigned long interval_WiFi = 1000 * 30;
 
 // ####################################################################
 // SETUP AND LOOP

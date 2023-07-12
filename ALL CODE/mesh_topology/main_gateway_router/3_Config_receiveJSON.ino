@@ -112,6 +112,19 @@ void loop_receive_JSON() {
           Serial.printf("Throughput: %lf kbps \n", throughput);
         }
 
+        /* 
+        #######################################################
+          MTBF
+        #######################################################
+        */
+
+        MTBF = doc["MTBF"].as<long double>();
+        if (MTBF >= 0) { 
+          str_key_name_MTBF = node_N + node_num + " MTBF";
+          str_key_name_MTBF.toCharArray(key_name_MTBF, 10);
+          Serial.printf("MTBF: %Lf sec \n", MTBF);
+        }
+
       }
     } 
     else 
