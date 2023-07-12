@@ -30,7 +30,8 @@ uint32_t msg_sent_fail = 0;                   // keeps count the packets not sen
 
 int DHT22_rate_seconds = 60 * 5;                  // every 5 mins
 int MQ135_rate_seconds = 60 * 5;                  // every 5 mins
-int customWorkingPeriod_SDS011_seconds = 60 * 5;  // every 5 mins
+int customWorkingPeriod_SDS011_minutes = 5;
+int customWorkingPeriod_SDS011_seconds = 60 * customWorkingPeriod_SDS011_minutes;  // every 5 mins
 
 unsigned long taskSendMsg_DHT22_seconds = TASK_SECOND * DHT22_rate_seconds;
 unsigned long taskSendMsg_MQ135_seconds = TASK_SECOND * MQ135_rate_seconds;
@@ -84,7 +85,7 @@ SdsDustSensor sds(Serial2);
 int latency_data[10];
 int latency_index = 0;
 int sum = 0;
-int ave_latency = 0;
+double ave_latency = 0;
 String msg_Latency;
 bool flag_delay_received = false;
 
@@ -93,6 +94,7 @@ bool flag_delay_received = false;
 // ####################################################################
 
 int msg_size = 0;
+double throughput = 0;
 
 // ####################################################################
 // TASKS
