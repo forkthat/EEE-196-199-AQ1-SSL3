@@ -1,12 +1,9 @@
-void setup_receive_JSON()
-{
+void setup_receive_JSON() {
   
 }
 
-void loop_receive_JSON()
-{
-  if (Serial2.available())
-  {
+void loop_receive_JSON() {
+  if (Serial2.available()) {
     // Allocate the JSON document
     // This one must be bigger than the sender's because it must store the strings
     StaticJsonDocument<300> doc;
@@ -14,8 +11,7 @@ void loop_receive_JSON()
     // Read the JSON document from the "link" serial port
     DeserializationError err = deserializeJson(doc, Serial2);
 
-    if (err == DeserializationError::Ok)
-    { 
+    if (err == DeserializationError::Ok) { 
       /* 
       #######################################################
         Display on Serial

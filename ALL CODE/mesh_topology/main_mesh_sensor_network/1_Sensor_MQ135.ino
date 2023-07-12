@@ -25,7 +25,6 @@ void setup_MQ135(){
   // Set math model to calculate the PPM concentration and the value of constants
   // PPM = a*ratio^b
   MQ135.setRegressionMethod(1); 
- 
   MQ135.init(); 
 
   Serial.print("Calibrating please wait.");

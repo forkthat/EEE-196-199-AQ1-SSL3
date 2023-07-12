@@ -20,7 +20,7 @@ painlessMesh mesh;
 #include <math.h>
 
 // ####################################################################
-// NODE NUMBER AND SENSOR TIMINGS
+// CRITICAL NODE INFORMATION AND TIMINGS
 // ####################################################################
 
 int nodeNumber = 3;                           // Change node number for each node and visually label each node
@@ -35,6 +35,11 @@ int customWorkingPeriod_SDS011_seconds = 60 * 5;  // every 5 mins
 unsigned long taskSendMsg_DHT22_seconds = TASK_SECOND * DHT22_rate_seconds;
 unsigned long taskSendMsg_MQ135_seconds = TASK_SECOND * MQ135_rate_seconds;
 unsigned long taskSendMsg_SDS011_seconds = TASK_SECOND * customWorkingPeriod_SDS011_seconds;
+
+int latency_rate_seconds = 30;          // every 30 seconds
+int throughput_rate_seconds = 60 * 60;  // every hour
+unsigned long taskLatency_rate_seconds = TASK_SECOND * latency_rate_seconds;
+unsigned long taskThroughput_rate_seconds = TASK_SECOND * throughput_rate_seconds;
 
 // ####################################################################
 // DHT22
@@ -76,9 +81,6 @@ SdsDustSensor sds(Serial2);
 // LATENCY
 // ####################################################################
 
-int latency_rate_seconds = 30;          // every 30 seconds
-unsigned long taskLatency_rate_seconds = TASK_SECOND * latency_rate_seconds;
-
 int latency_data[10];
 int latency_index = 0;
 int sum = 0;
@@ -90,8 +92,6 @@ bool flag_delay_received = false;
 // THROUGHPUT
 // ####################################################################
 
-int throughput_rate_seconds = 60 * 60;      // every hour
-unsigned long taskThroughput_rate_seconds = TASK_SECOND * throughput_rate_seconds;
 int msg_size = 0;
 
 // ####################################################################
@@ -101,7 +101,6 @@ int msg_size = 0;
 Task taskSendMessage_DHT22(taskSendMsg_DHT22_seconds, TASK_FOREVER, &sendMessage_DHT22);
 Task taskSendMessage_MQ135(taskSendMsg_MQ135_seconds, TASK_FOREVER, &sendMessage_MQ135);
 Task taskSendMessage_SDS011(taskSendMsg_SDS011_seconds, TASK_FOREVER, &sendMessage_SDS011);
-
 Task task_Latency(taskLatency_rate_seconds, TASK_FOREVER, &sendMessage_Latency);
 Task task_Throughput(taskThroughput_rate_seconds, TASK_FOREVER, &end_Throughput);
 
