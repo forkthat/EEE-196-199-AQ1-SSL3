@@ -14,7 +14,7 @@ void loop_receive_JSON() {
     if (err == DeserializationError::Ok) { 
       /* 
       #######################################################
-        Display on Serial
+        Sensor Values
       #######################################################
       */
       node_num = doc["node_num"].as<uint32_t>();
@@ -59,32 +59,59 @@ void loop_receive_JSON() {
           str_key_name_PM10.toCharArray(key_name_PM10, 10);
           Serial.printf("PM 10: %lf ug/m^3 \n", pm10); 
         }
-      }
 
-      /* 
-      #######################################################
-        Packet Loss
-      #######################################################
-      */
+        /* 
+        #######################################################
+          Packet Loss
+        #######################################################
+        */
 
-      msg_sent_fail = doc["msg_fail"].as<uint32_t>();
-      msg_sent_success = doc["msg_success"].as<uint32_t>();
+        msg_sent_fail = doc["msg_fail"].as<uint32_t>();
+        msg_sent_success = doc["msg_success"].as<uint32_t>();
 
-      if (msg_sent_success >= 0) { 
-        Serial.printf("Success: %u \n", msg_sent_success); 
-      }
-      if (msg_sent_fail >= 0) { 
-        Serial.printf("Fail: %u \n", msg_sent_fail); 
-      }
-
-      total = msg_sent_success + msg_sent_fail;
-      if (total != 0) {
-        packet_loss = (msg_sent_fail*100) / total;
-        if (packet_loss >= 0 && packet_loss <= 100){
-          str_key_name_packet_loss = node_N + node_num + " Packet_Loss";
-          str_key_name_packet_loss.toCharArray(key_name_packet_loss, 10);
-          Serial.printf("Packet loss: %lf%% \n", packet_loss);
+        if (msg_sent_success >= 0) { 
+          Serial.printf("Success: %u \n", msg_sent_success); 
         }
+        if (msg_sent_fail >= 0) { 
+          Serial.printf("Fail: %u \n", msg_sent_fail); 
+        }
+
+        total = msg_sent_success + msg_sent_fail;
+        if (total != 0) {
+          packet_loss = (msg_sent_fail*100) / total;
+          if (packet_loss >= 0 && packet_loss <= 100){
+            str_key_name_packet_loss = node_N + node_num + " Packet_Loss";
+            str_key_name_packet_loss.toCharArray(key_name_packet_loss, 10);
+            Serial.printf("Packet loss: %lf%% \n", packet_loss);
+          }
+        }
+
+        /* 
+        #######################################################
+          Latency
+        #######################################################
+        */
+
+        latency = doc["latency"].as<double>();
+        if (latency >= 0) { 
+          str_key_name_latency = node_N + node_num + " Latency";
+          str_key_name_latency.toCharArray(key_name_latency, 10);
+          Serial.printf("Latency: %lf ms \n", latency);
+        }
+
+        /* 
+        #######################################################
+          Throughput
+        #######################################################
+        */
+
+        throughput = doc["throughput"].as<double>();
+        if (throughput >= 0) { 
+          str_key_name_throughput = node_N + node_num + " Throughput";
+          str_key_name_throughput.toCharArray(key_name_throughput, 10);
+          Serial.printf("Throughput: %lf kbps \n", throughput);
+        }
+
       }
     } 
     else 

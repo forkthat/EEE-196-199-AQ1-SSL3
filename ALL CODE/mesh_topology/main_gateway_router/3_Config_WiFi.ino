@@ -9,8 +9,7 @@ void init_WIFI() {
   Serial.println(WiFi.localIP());
 }
 
-void reconnect_WIFI()
-{
+void reconnect_WIFI() {
   unsigned long currentMillis = millis();
   // if WiFi is down, try reconnecting
   if ((WiFi.status() != WL_CONNECTED) && (currentMillis - previousMillis >=interval)) {
@@ -22,14 +21,12 @@ void reconnect_WIFI()
   }
 }
 
-void setup_WIFI()
-{
+void setup_WIFI() {
   init_WIFI();
   Serial.print("RSSI: ");
   Serial.println(WiFi.RSSI());
 }
 
-void loop_WIFI()
-{
+void loop_WIFI() {
   reconnect_WIFI();
 }

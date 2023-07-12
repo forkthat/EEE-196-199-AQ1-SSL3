@@ -28,6 +28,9 @@ void loop_thingsboard() {
     tb.sendTelemetryFloat(key_name_CO2, CO2);
     tb.sendTelemetryFloat(key_name_PM25, pm25);
     tb.sendTelemetryFloat(key_name_PM10, pm10);
+    tb.sendTelemetryFloat(key_name_packet_loss, packet_loss);
+    tb.sendTelemetryFloat(key_name_latency, latency);
+    tb.sendTelemetryFloat(key_name_throughput, throughput);
     lastSend = millis();
   }
   tb.loop();

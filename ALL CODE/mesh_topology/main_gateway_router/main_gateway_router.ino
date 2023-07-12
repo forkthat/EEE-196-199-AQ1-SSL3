@@ -11,7 +11,7 @@
 #define MAX_STRING_LENGTH 10
 
 uint32_t node_num, msg_sent_success, msg_sent_fail;
-double tempC, hum, CO, CO2, pm25, pm10, total, packet_loss;
+double tempC, hum, CO, CO2, pm25, pm10, total, packet_loss, latency, throughput;
 
 String node_N = "N";
 String str_key_name_temp;
