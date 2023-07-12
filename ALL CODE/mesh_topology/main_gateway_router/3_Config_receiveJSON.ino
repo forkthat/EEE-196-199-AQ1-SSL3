@@ -18,49 +18,46 @@ void loop_receive_JSON() {
       #######################################################
       */
       node_num = doc["node_num"].as<uint32_t>();
+
       if (node_num > 0) { 
         Serial.printf("============\nNode: %u \n", node_num);
 
         tempC = doc["tempC"].as<double>();
-        if (tempC > 0) { 
+        hum = doc["hum"].as<double>();
+        CO = doc["CO"].as<double>();
+        // CO2 = doc["CO2"].as<double>();
+        pm25 = doc["PM_2.5"].as<double>();
+        pm10 = doc["PM_10"].as<double>();
+
+        if (tempC >= 0 && tempC <= 100) { 
           str_key_name_temp = node_N + node_num + " Temp";
           str_key_name_temp.toCharArray(key_name_temp, 10);
           Serial.printf("Temperature: %lf C \n", tempC); 
         }
-        
-        hum = doc["hum"].as<double>();
-        if (hum > 0) { 
+        if (hum >= 0 && hum <= 100) { 
           str_key_name_hum = node_N + node_num + " Hum";
           str_key_name_hum.toCharArray(key_name_hum, 10);
           Serial.printf("Humidity: %lf %% \n", hum); 
         }
-
-        CO = doc["CO"].as<double>();
-        if (CO > 0) { 
+        if (CO >= 0) { 
           str_key_name_CO = node_N + node_num + " CO";
           str_key_name_CO.toCharArray(key_name_CO, 10);
-          Serial.printf("CO: %lf INSERT_UNITS_HERE \n", CO); 
+          Serial.printf("CO: %lf ug/m^3 \n", CO); 
         }
-
-        CO2 = doc["CO2"].as<double>();
-        if (CO2 > 0) { 
-          str_key_name_CO2 = node_N + node_num + " CO2";
-          str_key_name_CO2.toCharArray(key_name_CO2, 10);
-          Serial.printf("CO2: %lf INSERT_UNITS_HERE \n", CO2);
-        }
-
-        pm25 = doc["PM_2.5"].as<double>();
-        if (pm25 > 0) { 
+        // if (CO2 > 0) { 
+        //   str_key_name_CO2 = node_N + node_num + " CO2";
+        //   str_key_name_CO2.toCharArray(key_name_CO2, 10);
+        //   Serial.printf("CO2: %lf ug/m^3 \n", CO2);
+        // }
+        if (pm25 >= 0) { 
           str_key_name_PM25 = node_N + node_num + " PM2.5";
           str_key_name_PM25.toCharArray(key_name_PM25, 10);
-          Serial.printf("PM 2.5: %lf INSERT_UNITS_HERE \n", pm25); 
+          Serial.printf("PM 2.5: %lf ug/m^3 \n", pm25); 
         }
-
-        pm10 = doc["PM_10"].as<double>();
-        if (pm10 > 0) { 
+        if (pm10 >= 0) { 
           str_key_name_PM10 = node_N + node_num + " PM10";
           str_key_name_PM10.toCharArray(key_name_PM10, 10);
-          Serial.printf("PM 10: %lf INSERT_UNITS_HERE \n", pm10); 
+          Serial.printf("PM 10: %lf ug/m^3 \n", pm10); 
         }
       }
 
@@ -70,20 +67,25 @@ void loop_receive_JSON() {
       #######################################################
       */
 
+      msg_sent_fail = doc["msg_fail"].as<uint32_t>();
       msg_sent_success = doc["msg_success"].as<uint32_t>();
-      if (msg_sent_success > 0) { 
+
+      if (msg_sent_success >= 0) { 
         Serial.printf("Success: %u \n", msg_sent_success); 
       }
-
-      msg_sent_fail = doc["msg_fail"].as<uint32_t>();
-      if (msg_sent_fail > 0) { 
+      if (msg_sent_fail >= 0) { 
         Serial.printf("Fail: %u \n", msg_sent_fail); 
       }
 
-      double total_success_fail = msg_sent_success + msg_sent_fail;
-      double packet_loss = msg_sent_fail / total_success_fail;
-      Serial.printf("Packet loss: %lf%% \n", packet_loss*100); 
-      
+      total = msg_sent_success + msg_sent_fail;
+      if (total != 0) {
+        packet_loss = (msg_sent_fail*100) / total;
+        if (packet_loss >= 0 && packet_loss <= 100){
+          str_key_name_packet_loss = node_N + node_num + " Packet_Loss";
+          str_key_name_packet_loss.toCharArray(key_name_packet_loss, 10);
+          Serial.printf("Packet loss: %lf%% \n", packet_loss);
+        }
+      }
     } 
     else 
     {

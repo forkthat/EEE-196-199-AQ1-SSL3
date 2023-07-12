@@ -7,10 +7,11 @@
 
 #include <ArduinoJson.h>
 #include <sstream>
+
 #define MAX_STRING_LENGTH 10
 
 uint32_t node_num, msg_sent_success, msg_sent_fail;
-double tempC, hum, CO, CO2, pm25, pm10;
+double tempC, hum, CO, CO2, pm25, pm10, total, packet_loss;
 
 String node_N = "N";
 String str_key_name_temp;
@@ -19,6 +20,9 @@ String str_key_name_CO;
 String str_key_name_CO2;
 String str_key_name_PM25;
 String str_key_name_PM10;
+String str_key_name_packet_loss;
+String str_key_name_latency;
+String str_key_name_throughput;
 
 char key_name_temp[MAX_STRING_LENGTH];
 char key_name_hum[MAX_STRING_LENGTH];
@@ -26,6 +30,9 @@ char key_name_CO[MAX_STRING_LENGTH];
 char key_name_CO2[MAX_STRING_LENGTH];
 char key_name_PM25[MAX_STRING_LENGTH];
 char key_name_PM10[MAX_STRING_LENGTH];
+char key_name_packet_loss[MAX_STRING_LENGTH];
+char key_name_latency[MAX_STRING_LENGTH];
+char key_name_throughput[MAX_STRING_LENGTH];
 
 // ####################################################################
 // THINGSBOARD
@@ -48,10 +55,10 @@ ThingsBoard tb(wifiClient);
 #include <WiFi.h>
 
 // Replace with your network credentials
-// const char* ssid = "Experimental Network";
-// const char* password = "tanongmokayjaybie";
-const char* ssid = "Thingsboard";
-const char* password = "dennis@thingsboard";
+const char* ssid = "Experimental Network";
+const char* password = "tanongmokayjaybie";
+// const char* ssid = "Thingsboard";
+// const char* password = "dennis@thingsboard";
 
 unsigned long previousMillis = 0;
 unsigned long interval = 30000;
