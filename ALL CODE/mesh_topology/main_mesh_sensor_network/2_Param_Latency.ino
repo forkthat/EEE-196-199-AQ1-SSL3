@@ -12,11 +12,11 @@ void receivedDelayCallback(uint32_t nodeId, int32_t delay){
   }
 
   StaticJsonDocument<128> doc;
-  doc["node_num"] = nodeNumber;
-  doc["msg_success"] = msg_sent_success;
-  doc["msg_fail"] = msg_sent_fail;
+  doc["node"] = nodeNumber;
+  doc["msg_s"] = msg_sent_success;
+  doc["msg_f"] = msg_sent_fail;
   
-  doc["latency"] = ave_latency;
+  doc["lat"] = ave_latency;
 
   msg_Latency = doc.as<String>();
   flag_delay_received = true;

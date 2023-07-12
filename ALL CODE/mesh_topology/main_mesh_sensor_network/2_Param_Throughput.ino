@@ -4,10 +4,10 @@ String getReadings_Throughput(){
 
   StaticJsonDocument<128> doc;
 
-  doc["node_num"] = nodeNumber;
-  doc["msg_success"] = msg_sent_success;
-  doc["msg_fail"] = msg_sent_fail;
-  doc["throughput"] = throughput;
+  doc["node"] = nodeNumber;
+  doc["msg_s"] = msg_sent_success;
+  doc["msg_f"] = msg_sent_fail;
+  doc["thr"] = throughput;
 
   return doc.as<String>();
 }

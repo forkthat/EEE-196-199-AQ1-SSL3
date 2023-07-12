@@ -1,12 +1,12 @@
 String getReadings_DHT22(){
   StaticJsonDocument<128> doc;
 
-  doc["node_num"] = nodeNumber;
-  doc["msg_success"] = msg_sent_success;
-  doc["msg_fail"] = msg_sent_fail;
+  doc["node"] = nodeNumber;
+  doc["msg_s"] = msg_sent_success;
+  doc["msg_f"] = msg_sent_fail;
 
   doc["hum"] = dht_sensor.readHumidity();
-  doc["tempC"] = dht_sensor.readTemperature();
+  doc["temp"] = dht_sensor.readTemperature();
   // doc["tempF"] = dht_sensor.readTemperature(true);
 
   return doc.as<String>();

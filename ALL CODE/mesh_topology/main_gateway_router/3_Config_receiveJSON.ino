@@ -6,7 +6,7 @@ void loop_receive_JSON() {
   if (Serial2.available()) {
     // Allocate the JSON document
     // This one must be bigger than the sender's because it must store the strings
-    StaticJsonDocument<300> doc;
+    StaticJsonDocument<256> doc;
 
     // Read the JSON document from the "link" serial port
     DeserializationError err = deserializeJson(doc, Serial2);
@@ -17,12 +17,12 @@ void loop_receive_JSON() {
         Sensor Values
       #######################################################
       */
-      node_num = doc["node_num"].as<uint32_t>();
+      node_num = doc["node"].as<uint32_t>();
 
       if (node_num > 0) { 
         Serial.printf("============\nNode: %u \n", node_num);
 
-        tempC = doc["tempC"].as<double>();
+        tempC = doc["temp"].as<double>();
         hum = doc["hum"].as<double>();
         CO = doc["CO"].as<double>();
         // CO2 = doc["CO2"].as<double>();
@@ -66,8 +66,8 @@ void loop_receive_JSON() {
         #######################################################
         */
 
-        msg_sent_fail = doc["msg_fail"].as<uint32_t>();
-        msg_sent_success = doc["msg_success"].as<uint32_t>();
+        msg_sent_success = doc["msg_s"].as<uint32_t>();
+        msg_sent_fail = doc["msg_f"].as<uint32_t>();
 
         if (msg_sent_success >= 0) { 
           Serial.printf("Success: %u \n", msg_sent_success); 
@@ -92,7 +92,7 @@ void loop_receive_JSON() {
         #######################################################
         */
 
-        latency = doc["latency"].as<double>();
+        latency = doc["lat"].as<double>();
         if (latency >= 0) { 
           str_key_name_latency = node_N + node_num + " Latency";
           str_key_name_latency.toCharArray(key_name_latency, 10);
@@ -105,7 +105,7 @@ void loop_receive_JSON() {
         #######################################################
         */
 
-        throughput = doc["throughput"].as<double>();
+        throughput = doc["thr"].as<double>();
         if (throughput >= 0) { 
           str_key_name_throughput = node_N + node_num + " Throughput";
           str_key_name_throughput.toCharArray(key_name_throughput, 10);
