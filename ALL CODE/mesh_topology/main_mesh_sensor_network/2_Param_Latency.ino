@@ -5,9 +5,9 @@ void receivedDelayCallback(uint32_t nodeId, int32_t delay){
 
   if (latency_index >= 10){
     for(int i = 0; i < 10; i++){
-      sum += latency_data[i];
+      sum_Latency += latency_data[i];
     }
-    ave_latency = sum/10;
+    ave_Latency = sum_Latency/10;
     latency_index = 0;
   }
 
@@ -15,9 +15,8 @@ void receivedDelayCallback(uint32_t nodeId, int32_t delay){
   doc["node"] = nodeNumber;
   doc["msg_s"] = msg_sent_success;
   doc["msg_f"] = msg_sent_fail;
-  
-  doc["lat"] = ave_latency;
-
+  doc["lat"] = ave_Latency;
   msg_Latency = doc.as<String>();
-  flag_delay_received = true;
+  
+  sendToGateway(gateway_mesh_ID, msg_Latency);
 }
