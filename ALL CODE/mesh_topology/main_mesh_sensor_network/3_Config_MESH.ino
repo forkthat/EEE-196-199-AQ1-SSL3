@@ -76,6 +76,7 @@ void setup_MESH() {
   // network parameters
   userScheduler.addTask(task_Latency);
   userScheduler.addTask(task_Throughput);
+  userScheduler.addTask(task_MTBF);
 }
 
 void loop_MESH() {
@@ -85,12 +86,16 @@ void loop_MESH() {
     taskSendMessage_SDS011.enableIfNot();
     task_Latency.enableIfNot();
     task_Throughput.enableIfNot();
+    task_MTBF.enableIfNot();
   } else {
     taskSendMessage_DHT22.disable();
     taskSendMessage_MQ135.disable();
     taskSendMessage_SDS011.disable();
     task_Latency.disable();
     task_Throughput.disable();
+    task_MTBF.disable();
+    
+    calculate_MTBF();
   }
   mesh.update();
 }

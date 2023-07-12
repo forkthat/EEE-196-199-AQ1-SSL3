@@ -37,10 +37,25 @@ unsigned long taskSendMsg_DHT22_seconds = TASK_SECOND * DHT22_rate_seconds;
 unsigned long taskSendMsg_MQ135_seconds = TASK_SECOND * MQ135_rate_seconds;
 unsigned long taskSendMsg_SDS011_seconds = TASK_SECOND * customWorkingPeriod_SDS011_seconds;
 
-int latency_rate_seconds = 30;          // every 30 seconds
-int throughput_rate_seconds = 60 * 60;  // every hour
+int latency_rate_seconds = 60;              // every 60 seconds
+int throughput_rate_seconds = 60 * 15;      // every 15 minutes
+int throughput_delay_seconds = 60 * 14.75;  // every 14.75 minutes
+int MTBF_rate_seconds = 60;                 // every 60 seconds
 unsigned long taskLatency_rate_seconds = TASK_SECOND * latency_rate_seconds;
 unsigned long taskThroughput_rate_seconds = TASK_SECOND * throughput_rate_seconds;
+unsigned long taskThroughput_delay_seconds = TASK_SECOND * throughput_delay_seconds;
+unsigned long taskMTBF_rate_seconds = TASK_SECOND * MTBF_rate_seconds;
+
+// ####################################################################
+// TASKS           // every 60 secon
+// ####################################################################
+
+Task taskSendMessage_DHT22(taskSendMsg_DHT22_seconds, TASK_FOREVER, &sendMessage_DHT22);
+Task taskSendMessage_MQ135(taskSendMsg_MQ135_seconds, TASK_FOREVER, &sendMessage_MQ135);
+Task taskSendMessage_SDS011(taskSendMsg_SDS011_seconds, TASK_FOREVER, &sendMessage_SDS011);
+Task task_Latency(taskLatency_rate_seconds, TASK_FOREVER, &sendMessage_Latency);
+Task task_Throughput(taskThroughput_rate_seconds, TASK_FOREVER, &start_Throughput);
+Task task_MTBF(taskMTBF_rate_seconds, TASK_FOREVER, &sendMessage_MTBF);
 
 // ####################################################################
 // DHT22
@@ -82,12 +97,11 @@ SdsDustSensor sds(Serial2);
 // LATENCY
 // ####################################################################
 
-int latency_data[10];
+int latency_data[10] = { };
 int latency_index = 0;
-int sum = 0;
-double ave_latency = 0;
+int sum_Latency = 0;
+double ave_Latency = 0;
 String msg_Latency;
-bool flag_delay_received = false;
 
 // ####################################################################
 // THROUGHPUT
@@ -97,14 +111,13 @@ int msg_size = 0;
 double throughput = 0;
 
 // ####################################################################
-// TASKS
+// MEAN TIME BETWEEN FAILURES
 // ####################################################################
 
-Task taskSendMessage_DHT22(taskSendMsg_DHT22_seconds, TASK_FOREVER, &sendMessage_DHT22);
-Task taskSendMessage_MQ135(taskSendMsg_MQ135_seconds, TASK_FOREVER, &sendMessage_MQ135);
-Task taskSendMessage_SDS011(taskSendMsg_SDS011_seconds, TASK_FOREVER, &sendMessage_SDS011);
-Task task_Latency(taskLatency_rate_seconds, TASK_FOREVER, &sendMessage_Latency);
-Task task_Throughput(taskThroughput_rate_seconds, TASK_FOREVER, &end_Throughput);
+unsigned long num_failures = 0;
+unsigned long long timer_MTBF;
+unsigned long long sum_MTBF;
+long double calcu_MTBF;
 
 // ####################################################################
 // SETUP AND LOOP
@@ -117,7 +130,8 @@ void setup() {
   setup_MESH();
   setup_DHT22();
   setup_MQ135();
-  setup_SDS011();
+  setup_SDS011();  
+  timer_MTBF = millis();
 }
 
 void loop() {
