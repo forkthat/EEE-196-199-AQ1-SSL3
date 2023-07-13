@@ -34,11 +34,11 @@ void setup_MQ135(){
   
   if(isinf(calcR0)){
     Serial.println("Warning: Conection issue, R0 is infinite (Open circuit detected)"); 
-    while(1);
+    // while(1);
   }
   if(calcR0 == 0){
     Serial.println("Warning: Conection issue, R0 is zero (Analog pin with short circuit to ground)"); 
-    while(1);
+    // while(1);
   }
 
   /*****************************  MQ CAlibration ********************************************/ 
