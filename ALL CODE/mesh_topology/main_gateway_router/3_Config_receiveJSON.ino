@@ -105,11 +105,11 @@ void loop_receive_JSON() {
         #######################################################
         */
 
-        throughput = doc["thr"].as<double>();
+        throughput = doc["thr_bps"].as<double>();
         if (throughput >= 0) { 
           str_key_name_throughput = node_N + node_num + " Throughput";
           str_key_name_throughput.toCharArray(key_name_throughput, 10);
-          Serial.printf("Throughput: %lf kbps \n", throughput);
+          Serial.printf("Throughput: %lf bps \n", throughput);
         }
 
         /* 
