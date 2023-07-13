@@ -4,7 +4,7 @@ String getReadings_MQ135(){
   float CO = MQ135.readSensor();
   // MQ135.setA(110.47); MQ135.setB(-2.862);
   // float CO2 = MQ135.readSensor();
-  MQ135.serialDebug();
+  // MQ135.serialDebug();
 
   StaticJsonDocument<128> doc;  
   doc["node"] = nodeNumber;
@@ -42,7 +42,7 @@ void setup_MQ135(){
   }
 
   /*****************************  MQ CAlibration ********************************************/ 
-  MQ135.serialDebug(true);
+  // MQ135.serialDebug(true);
 }
 
 void loop_MQ135(){
