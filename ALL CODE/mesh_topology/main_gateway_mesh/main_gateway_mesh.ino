@@ -18,6 +18,7 @@ void setup(){
   Serial2.begin(9600, SERIAL_8N1, RXD2, TXD2);
   while(!Serial2) continue;
 
+  Serial.println("======================================================");
   setup_MESH();
 }
 
