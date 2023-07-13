@@ -15,7 +15,7 @@ void sendMessage() {
 void receivedCallback( uint32_t from, String &msg ) {
   Serial.printf("Received from %u msg=%s\n", from, msg.c_str());
 
-  StaticJsonDocument<300> doc;
+  DynamicJsonDocument doc(2048);
   deserializeJson(doc, msg);
 
   if (Serial2.available()) {
