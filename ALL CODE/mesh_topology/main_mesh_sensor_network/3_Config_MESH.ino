@@ -50,7 +50,7 @@ void newConnectionCallback(uint32_t nodeId) {
 
 // Runs when a new node joins or leaves the network
 void changedConnectionCallback() {
-  // Serial.printf("Changed connections\n");
+  Serial.printf("Changed connections\n");
 }
 
 // Runs when the network adjusts the time, so that all nodes are synced
@@ -69,11 +69,9 @@ void setup_MESH() {
   mesh.onNodeTimeAdjusted(&nodeTimeAdjustedCallback);
   mesh.onNodeDelayReceived(&receivedDelayCallback);
 
-  // sensors
   userScheduler.addTask(taskSendMessage_DHT22);
   userScheduler.addTask(taskSendMessage_MQ135);
   userScheduler.addTask(taskSendMessage_SDS011);
-  // network parameters
   userScheduler.addTask(task_Latency);
   userScheduler.addTask(task_Throughput);
   userScheduler.addTask(task_MTBF);
@@ -81,21 +79,29 @@ void setup_MESH() {
 
 void loop_MESH() {
   if (mesh.isConnected(gateway_mesh_ID)){
+    Serial.print("mesh.isConnected = true\t");
     taskSendMessage_DHT22.enableIfNot();
     taskSendMessage_MQ135.enableIfNot();
     taskSendMessage_SDS011.enableIfNot();
     task_Latency.enableIfNot();
     task_Throughput.enableIfNot();
     task_MTBF.enableIfNot();
+    if (flag_MTBF_uptime == false) {
+      flag_MTBF_change = true;
+    }
+    flag_MTBF_uptime = true;
   } else {
+    Serial.print("mesh.isConnected = false\t\t");
     taskSendMessage_DHT22.disable();
     taskSendMessage_MQ135.disable();
     taskSendMessage_SDS011.disable();
     task_Latency.disable();
     task_Throughput.disable();
     task_MTBF.disable();
-    
-    calculate_MTBF();
+    if (flag_MTBF_uptime == true) {
+      flag_MTBF_change = true;
+    }
+    flag_MTBF_uptime = false;
   }
   mesh.update();
 }

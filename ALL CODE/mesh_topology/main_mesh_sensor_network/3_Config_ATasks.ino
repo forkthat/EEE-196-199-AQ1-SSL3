@@ -16,26 +16,37 @@ void sendToGateway(uint32_t gateway_mesh_ID, String &msg) {
     // size in bytes
     msg_size += msg.length();
     msg_sent_success += 1;
+    if (flag_MTBF_uptime == false) {
+      flag_MTBF_change = true;
+    }
+    flag_MTBF_uptime = true;
   } else {
     Serial.printf("Sending FAILED to %u msg=%s\n", gateway_mesh_ID, msg.c_str());
     msg_sent_fail += 1;
-    calculate_MTBF();
+    if (flag_MTBF_uptime == true) {
+      flag_MTBF_change = true;
+    }
+    flag_MTBF_uptime = false;
   }
+  calculate_MTBF();
 }
 
 void sendMessage_DHT22() {
   String msg = getReadings_DHT22();
   sendToGateway(gateway_mesh_ID, msg);
+  taskSendMessage_DHT22.setInterval(random(taskSendMsg_DHT22_seconds_low, taskSendMsg_DHT22_seconds_high));
 }
 
 void sendMessage_MQ135() {
   String msg = getReadings_MQ135();
   sendToGateway(gateway_mesh_ID, msg);
+  taskSendMessage_MQ135.setInterval(random(taskSendMsg_MQ135_seconds_low, taskSendMsg_MQ135_seconds_high));
 }
 
 void sendMessage_SDS011() {
   String msg = getReadings_SDS011();
   sendToGateway(gateway_mesh_ID, msg);
+  taskSendMessage_SDS011.setInterval(random(taskSendMsg_SDS011_seconds_low, taskSendMsg_SDS011_seconds_high));
 }
 
 /*
@@ -49,11 +60,12 @@ void sendMessage_SDS011() {
 
 void sendMessage_Latency() {
   mesh.startDelayMeas(gateway_mesh_ID);
+  task_Latency.setInterval(random(taskLatency_rate_seconds_low, taskLatency_rate_seconds_high));
 }
 
 void start_Throughput() {
   task_Throughput.setCallback(&end_Throughput);
-  delay(taskThroughput_delay_seconds);
+  delay(taskThroughput_rate_seconds);
 }
 
 void end_Throughput() {
@@ -65,4 +77,5 @@ void end_Throughput() {
 void sendMessage_MTBF() {
   String msg = getReadings_MTBF();
   sendToGateway(gateway_mesh_ID, msg);
+  task_MTBF.setInterval(random(taskMTBF_rate_seconds_low, taskMTBF_rate_seconds_high));
 }
