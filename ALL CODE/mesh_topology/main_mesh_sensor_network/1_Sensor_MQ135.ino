@@ -1,9 +1,9 @@
 String getReadings_MQ135(){
   MQ135.update();
   MQ135.setA(605.18); MQ135.setB(-3.937);
-  float CO = MQ135.readSensor();
+  CO = MQ135.readSensor();
   // MQ135.setA(110.47); MQ135.setB(-2.862);
-  // float CO2 = MQ135.readSensor();
+  // CO2 = MQ135.readSensor();
   // MQ135.serialDebug();
 
   StaticJsonDocument<128> doc;  

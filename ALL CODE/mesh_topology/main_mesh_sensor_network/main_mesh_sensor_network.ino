@@ -25,7 +25,7 @@ int task_delay = 10000;
 // CRITICAL NODE INFORMATION AND TIMINGS
 // ####################################################################
 
-int nodeNumber = 2;                           // Change node number for each node and visually label each node
+int nodeNumber = 1;                           // Change node number for each node and visually label each node
 const uint32_t gateway_mesh_ID = 1843304141;  // ID of the ESP32 gateway
 uint32_t msg_sent_success = 0;                // keeps count the successful packets sent during connection
 uint32_t msg_sent_fail = 0;                   // keeps count the packets not sent during connection
@@ -108,7 +108,8 @@ DHT dht_sensor(DHT_SENSOR_PIN, DHT_SENSOR_TYPE);
 #define ADC_Bit_Resolution 12                 
 #define RatioMQ135CleanAir 5    // (RS/R0) = 3.6 ppm  
 
-double CO2 = (0);
+double CO = 0;
+double CO2 = 0;
 MQUnifiedsensor MQ135(placa, Voltage_Resolution, ADC_Bit_Resolution, pin, type);
 
 // ####################################################################
