@@ -43,12 +43,12 @@ void calculate_MTBF() {
     flag_MTBF_change = false;
   }
   
-  Serial.printf("num_failures: %lu \t", num_failures);
-  Serial.printf("timer_MTBF_start: %llu \t", timer_MTBF_start);
-  Serial.printf("timer_MTBF_end: %llu \t", timer_MTBF_end);
-  Serial.printf("diff_MTBF: %llu \t", diff_MTBF);
-  Serial.printf("sum_MTBF: %llf \t", sum_MTBF);
-  Serial.printf("calcu_MTBF: %llf \n", calcu_MTBF);
+  // Serial.printf("num_failures: %lu \t", num_failures);
+  // Serial.printf("timer_MTBF_start: %llu \t", timer_MTBF_start);
+  // Serial.printf("timer_MTBF_end: %llu \t", timer_MTBF_end);
+  // Serial.printf("diff_MTBF: %llu \t", diff_MTBF);
+  // Serial.printf("sum_MTBF: %llf \t", sum_MTBF);
+  // Serial.printf("calcu_MTBF: %llf \n", calcu_MTBF);
 }
 
 void loop_MTBF(){
