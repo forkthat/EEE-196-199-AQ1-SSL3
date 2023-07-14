@@ -79,7 +79,7 @@ void setup_MESH() {
 
 void loop_MESH() {
   if (mesh.isConnected(gateway_mesh_ID)){
-    Serial.print("mesh.isConnected = true\t");
+    // Serial.println("mesh.isConnected = true");
     taskSendMessage_DHT22.enableIfNot();
     taskSendMessage_MQ135.enableIfNot();
     taskSendMessage_SDS011.enableIfNot();
@@ -91,7 +91,7 @@ void loop_MESH() {
     }
     flag_MTBF_uptime = true;
   } else {
-    Serial.print("mesh.isConnected = false\t\t");
+    // Serial.println("mesh.isConnected = false");
     taskSendMessage_DHT22.disable();
     taskSendMessage_MQ135.disable();
     taskSendMessage_SDS011.disable();
