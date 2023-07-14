@@ -1,0 +1,25 @@
+N1 Temperature (°C)
+N1 Humidity (%)
+N1 CO (ug/m^3)
+N1 PM2.5 (ug/m^3)
+N1 PM10 (ug/m^3)
+========================
+N1 Latency (sec)
+N1 Throughput (bits/sec)
+N1 Packet Loss (%)
+N1 MTBF (sec)
+========================
+N1 #2196F3
+N2 #9321F3
+N3 #4FD068
+N4 #EBD444
+N5 #F32175
+========================
+3 nodes - 4:17 pm - 4:47pm
+4 nodes - 6:06 pm - 6:36pm
+5 nodes - 6:43 pm - 7:13pm
+
+max latency
+ave throughput
+ave packetloss
+max MTBF

@@ -92,12 +92,12 @@ void loop_MESH() {
     flag_MTBF_uptime = true;
   } else {
     // Serial.println("mesh.isConnected = false");
-    taskSendMessage_DHT22.disable();
-    taskSendMessage_MQ135.disable();
-    taskSendMessage_SDS011.disable();
-    task_Latency.disable();
-    task_Throughput.disable();
-    task_MTBF.disable();
+    // taskSendMessage_DHT22.disable();
+    // taskSendMessage_MQ135.disable();
+    // taskSendMessage_SDS011.disable();
+    // task_Latency.disable();
+    // task_Throughput.disable();
+    // task_MTBF.disable();
     if (flag_MTBF_uptime == true) {
       flag_MTBF_change = true;
     }

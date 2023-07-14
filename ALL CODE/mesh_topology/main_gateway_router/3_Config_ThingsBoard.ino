@@ -21,7 +21,7 @@ void loop_thingsboard() {
   // float pm10_result = pm10 / 10;
 
   //send data to thingsboard
-  if (millis() - lastSend > interval_TB) {  // Update and send only after 5 seconds
+  if (millis() - lastSend > interval_TB) {  // Update and send only after interval_TB seconds
     tb.sendTelemetryFloat(key_name_temp, tempC);
     tb.sendTelemetryFloat(key_name_hum, hum);
     tb.sendTelemetryFloat(key_name_CO, CO);

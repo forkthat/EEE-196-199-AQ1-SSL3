@@ -8,8 +8,6 @@
   ####################################################################
 */
 
-unsigned long currentMillis, previousMillis;
-
 void sendToGateway(uint32_t gateway_mesh_ID, String &msg) {
   if(mesh.sendSingle(gateway_mesh_ID, msg)){
     Serial.printf("Sending SUCCESS to %u msg=%s\n", gateway_mesh_ID, msg.c_str());

@@ -49,7 +49,7 @@ ThingsBoard tb(wifiClient);
 
 char thingsboardServer[] = "thingsboard.cloud";
 unsigned long lastSend;
-unsigned long interval_TB = 1000 * 5;
+unsigned long interval_TB = 1000 * 15;
 
 // ####################################################################
 // WIFI

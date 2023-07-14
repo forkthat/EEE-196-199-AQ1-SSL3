@@ -25,19 +25,19 @@ int task_delay = 10000;
 // CRITICAL NODE INFORMATION AND TIMINGS
 // ####################################################################
 
-int nodeNumber = 1;                           // Change node number for each node and visually label each node
+int nodeNumber = 3;                           // Change node number for each node and visually label each node
 const uint32_t gateway_mesh_ID = 1843304141;  // ID of the ESP32 gateway
 uint32_t msg_sent_success = 0;                // keeps count the successful packets sent during connection
 uint32_t msg_sent_fail = 0;                   // keeps count the packets not sent during connection
 
 // ===============================================================
 
-int DHT22_rate_seconds = 10;                  
-int MQ135_rate_seconds = 10;                  
-int customWorkingPeriod_SDS011_minutes = 1;
-// int DHT22_rate_seconds = 60 * 5;                  // every 5 mins
-// int MQ135_rate_seconds = 60 * 5;                  // every 5 mins
-// int customWorkingPeriod_SDS011_minutes = 5;
+// int DHT22_rate_seconds = 10;                  
+// int MQ135_rate_seconds = 10;                  
+// int customWorkingPeriod_SDS011_minutes = 1;
+int DHT22_rate_seconds = 60 * 5;                  // every 5 mins
+int MQ135_rate_seconds = 60 * 5;                  // every 5 mins
+int customWorkingPeriod_SDS011_minutes = 5;
 int customWorkingPeriod_SDS011_seconds = 60 * customWorkingPeriod_SDS011_minutes;  // every 5 mins
 
 unsigned long taskSendMsg_DHT22_seconds = TASK_SECOND * DHT22_rate_seconds;
@@ -54,12 +54,12 @@ unsigned long taskSendMsg_SDS011_seconds_high = TASK_SECOND * (customWorkingPeri
 
 // ===============================================================
 
-int latency_rate_seconds = 60;              
-double throughput_rate_seconds = 60;
-int MTBF_rate_seconds = 60;              
-// int latency_rate_seconds = 60;              // every 60 seconds
-// double throughput_rate_seconds = 60 * 15;      // every 15 minutes
-// int MTBF_rate_seconds = 60;                 // every 60 seconds
+// int latency_rate_seconds = 60;              
+// double throughput_rate_seconds = 60;
+// int MTBF_rate_seconds = 60;              
+int latency_rate_seconds = 60;              // every 60 seconds
+double throughput_rate_seconds = 60 * 15;   // every 15 minutes
+int MTBF_rate_seconds = 60;                 // every 60 seconds
 unsigned long taskLatency_rate_seconds = TASK_SECOND * latency_rate_seconds;
 unsigned long taskLatency_rate_seconds_low = TASK_SECOND * (latency_rate_seconds + 1);
 unsigned long taskLatency_rate_seconds_high = TASK_SECOND * (latency_rate_seconds + 5);
@@ -106,10 +106,11 @@ DHT dht_sensor(DHT_SENSOR_PIN, DHT_SENSOR_TYPE);
 #define pin 34                    // Analog input 0 of your arduino
 #define type "MQ-135"       
 #define ADC_Bit_Resolution 12                 
-#define RatioMQ135CleanAir 5    // (RS/R0) = 3.6 ppm  
+#define RatioMQ135CleanAir 3.6    // (RS/R0) = 3.6 ppm  
 
-double CO = 0;
-double CO2 = 0;
+String str_CO;
+float CO = 0;
+float CO2 = 0;
 MQUnifiedsensor MQ135(placa, Voltage_Resolution, ADC_Bit_Resolution, pin, type);
 
 // ####################################################################
