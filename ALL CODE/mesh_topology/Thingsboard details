@@ -19,7 +19,57 @@ N5 #F32175
 4 nodes - 6:06 pm - 6:36pm
 5 nodes - 6:43 pm - 7:13pm
 
-max latency
-ave throughput
-ave packetloss
-max MTBF
+max latency 	- ave dapat
+ave throughput	- ave dapat
+ave packetloss	- sa dulo dapat, 1 value only
+max MTBF	- 
+=====================================
+Jean
+
+every 5 min, nagsesend mga sensor nodes (client) ng tig-1 packet (about 100 bytes, contains sensor readings). 
+- for every node, itatake note yung time packet sent. then pag nakarating sa esp32 (server), itatake note yung time packet received.
+
+for calculation (per node):
+1. Average latency (ms)
+* Individual packet latency = time packet received - time packet sent
+* Total latency = sum ng individual packet latency
+* Average latency = total latency / total instances na nagpadala ng packet
+
+2. Throughput (kbps)
+* Throughput = ((size of each packet * total instances na nagpadala ng packet * 8) / (total latency / 1000)) / 1000
+
+3. Packet loss
+* packet loss = (total instances na nagpadala ng packet - total packet received) / total instances na nagpadala ng packet
+
+4. MTBF
+* If nag-fail mag-measure (yung sensor nag-print ng "nan") or nag-fail mag-send sa thingsboard, dumadagdag number of failures
+* MTBF = 1440 min / number of failures
+
+==================================================================
+Dennis
+
+every 5 mins, nagsesend ng sensor data kasama ng mga network measurements
+>> DHT22, MQ135, SDS011
+>> Latency, Throughput, MTBF
+
+For network calculation (per node):
+1. Average latency (ms) - sensor node
+	- every 5 mins nagsesend ng data 
+	- inaverage na lang sa Thingsboard
+	- may function ang painlessmesh para kunin ang one-way delay from node to gateway
+
+2. Throughput (bps) - sensor node 
+	- every 15 mins nagmemeasure at nagsesend ng data
+	- very negligible ng values (0.00xxx bits/s), hindi na nakikita ni Thingsboard
+	
+3. Packet loss (%) - gateway
+	- measure success and fail sending per packet
+	- sa gateway na yung pagmeasure nito
+	
+4. MTBF (seconds) - sensor node
+	- kapag nagfail, saka lang magmemeasure
+	- nagmemeasure ng uptime ng system kapag connected sa Painless Mesh network at kapag success yung pagsend ng packets
+	- nagmemeasure ng downtime ng system kapag disconnected sa PLMesh at fail sa pagsend ng packets
+	
+5. Power
+	- light sleep: may default action na si taskScheduler na kung saan walang nagrurun na task, magssleep siya
