@@ -13,7 +13,7 @@
 \usepackage{units}
 \usepackage{parskip}
 \usepackage{graphicx}
-\usepackage{subfigure} 
+%\usepackage{subfigure}
 \usepackage{url}  
 %\usepackage{stfloats}  
 \usepackage{amsmath}   
@@ -26,14 +26,16 @@
 \usepackage{hyphenat}
 \usepackage{makeidx}
 \usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{hyperref-patches}
 %\usepackage{underscore}
 \fnbelowfloat
 \usepackage{times}
 \usepackage{multirow}
 %\usepackage{float}
 \usepackage{circuitikz}
-\usepackage[backend=bibtex,bibstyle=ieee,citestyle=numeric-comp]{biblatex}
-\addbibresource{bibliography/bibfile.bib}
+\usepackage[backend=bibtex,bibstyle=ieee,citestyle=numeric-comp,sorting=none]{biblatex}
+\addbibresource{bibliography/chap1.bib}
 \usepackage{pgfplots}
 %\usepackage{arydshln}
 \pgfplotsset{width=7cm,compat=1.5.1}
@@ -59,6 +61,7 @@
 \makeatother
 
 \usepackage{babel}
+
 \begin{document}
 %%% UP EEEI undergraduate project template
 %% v0.1 by Louis P. Alarcon 11/22/2011
@@ -123,8 +126,10 @@ The COVID-19 pandemic caused by the SARS-CoV-2 virus has induced the increase of
 \section{COVID-19 and its Relevance to Air Quality}
 \label{section:sec01_01}
 
-The COVID-19 pandemic caused by the contagious SARS-CoV-2 virus which severely affects the human respiratory system, triggered a disruption in most of the world?s economy for tourism and retail and forced the implementation of stringent containment measures \cite{RePEc:imf:imfwpa:2021/018}. The COVID-19 disease gets transmitted when people breathe air contaminated by droplets and small airborne particles containing the virus. The risk of breathing the disease is highest when people are in close proximity.  It is then crucial to maintain a considerable distance from others and for people to stay most of the time inside their homes. Unfortunately, they can also be inhaled over longer distances, even when indoors \cite{doi:10.1126/science.abd9149} \cite{https://doi.org/10.1111/ina.12751}.
+The COVID-19 pandemic caused by the contagious SARS-CoV-2 virus which severely affects the human respiratory system, triggered a disruption in most of the world?s economy for tourism and retail and forced the implementation of stringent containment measures \cite{RePEc:imf:imfwpa:2021/018}. The COVID-19 disease gets transmitted when people breathe air contaminated by droplets and small airborne particles containing the virus. The risk of breathing the disease is highest when people are in close proximity.  It is then crucial to maintain a considerable distance from others and for people to stay most of the time inside their homes. Unfortunately, they can also be inhaled over longer distances, even when indoors  \cite{https://doi.org/10.1111/ina.12751}
+\cite{doi:10.1126/science.abd9149}.
 
+During the pandemic, governments all around the world restricted the movement of the general population through the process of self-quarantining indoors.  This led to the increase in the amount of time people stayed indoors, thus indoor air pollution (IAP) worsened during the COVID-19 lockdown \cite{Du_2020}.  Many studies confirm that indoor air is more deadly than outdoor air \cite{Cincinelli} [6].
 
 \cleardoublepage{}
 
