@@ -1,8 +1,0 @@
-LaTeX Instructions
-1. Install TeXstudio
-2. Install MiKTeX
-3. Update MiKTeX
-4. Open \EEE-196-199-AQ1-SSL3\EEE 190-196 Proposal Manuscript Template\main.tex using TeXstudio
-5. Build the texfile by pressing F6
-6. Wait for the Messages tab at the bottom of TeXstudio to output "Process exited normally"
-7. Output texfile by pressing F7
